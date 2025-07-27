@@ -1,0 +1,4 @@
+mkdir "1-Proof-of-Work"
+mkdir "2-Proof-of-Stake"
+mkdir "3-Proof-of-Authority"
+mkdir "4-Proof-of-History"

@@ -1,0 +1,2 @@
+mkdir "1-Defi-Lending"
+mkdir "2-Flash-Loan"

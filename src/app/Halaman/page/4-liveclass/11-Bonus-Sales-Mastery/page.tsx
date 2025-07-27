@@ -1,29 +1,19 @@
 "use client";
-
 import { useSession } from "next-auth/react";
-import { Data } from "../01-Crypto-Trading-Kalimasada/data";
-import Loading from "@/ui/loading";
+import { Data } from "./container/data";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import Loading from '@/ui/loading';
+import { useSearchParams } from 'next/navigation';
 
-const getGoogleDriveEmbedUrl = (url: string) => {
-  const matches = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  const videoId = matches ? matches[1] : "";
-  return `https://www.youtube.com/embed/${videoId}`;
-};
-
-export default function Container() {
+export default function VideoPage() {
   const { data: session, status } = useSession();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
-  const [hideOverlay, setHideOverlay] = useState(false);
-  const router = useRouter();
+  const [bookmarks, setBookmarks] = useState<string[]>([]);
   const searchParams = useSearchParams();
-
-  const videoId = searchParams?.get("id") || Data[0].id;
-  const nextModuleLink = searchParams?.get("next") || "";
-  const thumbnail = searchParams?.get("thumbnail") || "";
-  const videoData = Data.find((item) => item.id === videoId);
+  const currentVideoId = searchParams?.get('id') || "";
 
   useEffect(() => {
     const checkAccess = async () => {
@@ -34,13 +24,14 @@ export default function Container() {
               Authorization: `Bearer ${session.accessToken}`,
             },
           });
-
+          
           if (!response.ok && response.status === 429) {
             setTimeout(checkAccess, 5000);
             return;
           }
 
           if (response.ok) {
+            const data = await response.json();
             setHasAccess(true);
           } else {
             setHasAccess(false);
@@ -64,98 +55,120 @@ export default function Container() {
   }, [session, status]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setHideOverlay(true);
-    }, 120000);
-    return () => clearTimeout(timer);
+    const savedBookmarks = localStorage.getItem("Bookmarks");
+    if (savedBookmarks) {
+      setBookmarks(JSON.parse(savedBookmarks));
+    }
   }, []);
 
-  const handleOverlayClick = () => {
-    if (nextModuleLink) {
-      router.push(nextModuleLink);
-    }
+  const toggleBookmark = (title: string) => {
+    const updatedBookmarks = bookmarks.includes(title)
+      ? bookmarks.filter((b) => b !== title)
+      : [...bookmarks, title];
+
+    setBookmarks(updatedBookmarks);
+    localStorage.setItem("Bookmarks", JSON.stringify(updatedBookmarks));
   };
 
-  const handleClickLesson = (item: typeof Data[number]) => {
-    router.push(
-      `?id=${item.id}&next=${encodeURIComponent(item.link)}&thumbnail=`
-    );
+  const getDriveThumbnail = (url: string) => {
+    if (!url) return "https://placehold.co/320x180/333/white?text=No+Preview";
+    
+    const fileId = url.match(/[-\w]{25,}/);
+    return fileId 
+      ? `https://drive.google.com/thumbnail?id=${fileId[0]}&sz=w320-h180&t=5`
+      : "https://placehold.co/320x180/333/white?text=No+Preview";
   };
 
-  if (loading || status === "loading") return <Loading />;
-  if (!session || !hasAccess) return null;
+  const getCategoryColor = (category: string) => {
+    const colors = [
+      'text-blue-500',
+      'text-green-500',
+      'text-yellow-500',
+      'text-red-500',
+      'text-purple-500',
+      'text-orange-500',
+      'text-pink-500',
+      'text-indigo-500'
+    ];
+    
+    
+    const uniqueCategories = Array.from(new Set(Data.map(item => item.category)));
+    
+    
+    const categoryIndex = uniqueCategories.indexOf(category);
+    
+    
+    return categoryIndex >= 0 ? colors[categoryIndex % colors.length] : 'text-gray-500';
+  };
+
+  if (loading || status === "loading") {
+    return <Loading />;
+  }
+
+  if (!session || !hasAccess) {
+    return null;
+  }
 
   return (
-    <div className="min-h-screen bg-black text-black font-sans">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left: Video Player */}
-        <div className="lg:w-[60%]">
-          <div className="p-4 lg:p-6 lg:fixed lg:w-[55%] lg:max-w-[900px]">
-            <div className="relative aspect-video bg-black rounded-2xl overflow-hidden border border-black shadow-lg">
-              <div
-                className={`absolute top-0 right-0 w-16 h-16 bg-transparent z-10 transition-opacity duration-1000 cursor-pointer ${
-                  hideOverlay ? "opacity-0" : "opacity-100"
-                }`}
-                onClick={handleOverlayClick}
-                title="Next Module"
-              />
-              {thumbnail ? (
-                <img
-                  src={thumbnail}
-                  alt="Video Thumbnail"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              ) : videoData?.drive ? (
-                <iframe
-                  src={getGoogleDriveEmbedUrl(videoData.drive)}
-                  width="100%"
-                  height="100%"
-                  title="YouTube video player"
-                  allow="autoplay"
-                  frameBorder="1"
-                  allowFullScreen
-                  style={{ border: "none" }}
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  No video available
+    <div className="min-h-screen bg-black">
+      <div className="flex flex-col w-full gap-1.5 p-1.5 sm:gap-4 sm:p-4">
+        {Data.map((item) => (
+          <div key={item.id} className="group relative h-[60px] sm:h-[100px] w-full">
+            <div className="rounded-lg sm:rounded-xl transition-all duration-300 h-full w-full">
+              <Link href={item.link} className="block relative h-full">
+                <div className="relative w-full h-full flex">
+                  <div className="relative w-[100px] sm:w-[180px] h-full bg-black rounded-l-lg sm:rounded-l-xl overflow-hidden shrink-0 hidden [@media(min-width:261px)]:block">
+                    {item.drive ? (
+                      <img
+                        src={getDriveThumbnail(item.drive)}
+                        alt={item.title}
+                        className="rounded-l-lg sm:rounded-l-xl w-full h-full object-cover"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs sm:text-base">
+                        No Preview
+                      </div>
+                    )}
+                  </div>
+                  <div className="relative flex-1 min-w-0 bg-black rounded-r-lg sm:rounded-r-xl p-1.5 sm:p-4 flex items-center border border-gray-900 w-auto">
+                    <div className="flex flex-col pr-6 sm:pr-8 min-w-0 w-full">
+                      <h3
+                        className={`text-xs sm:text-base font-bold line-clamp-2 ${
+                          item.id === currentVideoId ? 'text-purple-500' : 'text-gray-200 group-hover:text-purple-500'
+                        } transition-colors`}
+                      >
+                        {item.title}
+                      </h3>
+                      <span
+                        className={`sm:text-sm mt-0.5 sm:mt-1 truncate ${getCategoryColor(item.category)}`}
+                        style={{ fontSize: '10px' }} // mobile: 10px, sm: pakai tailwind
+                      >
+                        {item.category}
+                      </span>
+                    </div>
+                    <div className="absolute right-1.5 sm:right-4 top-1/2 -translate-y-1/2">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleBookmark(item.title);
+                        }}
+                        className="p-0.5 sm:p-1 transition-all duration-300"
+                      >
+                        {bookmarks.includes(item.title) ? (
+                          <FaBookmark className="text-purple-500 text-xs sm:text-base" />
+                        ) : (
+                          <FaRegBookmark className="text-gray-400 text-xs sm:text-base" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              )}
+              </Link>
             </div>
-            <h1 className="text-2xl lg:text-3xl font-bold mt-4 text-white tracking-tight">
-              {videoData?.title || "Untitled Lesson"}
-            </h1>
           </div>
-        </div>
-
-        {/* Right: Lessons List */}
-        <div className="lg:w-[40%] bg-black border-l border-black min-h-screen p-4 lg:p-6">
-          <h2 className="text-lg font-semibold mb-4 text-white">
-            Lessons ({Data.length})
-          </h2>
-          <div className="space-y-3">
-            {Data.map((item) => (
-              <div
-                key={item.id}
-                className={`flex items-center gap-3 p-4 rounded-xl transition-all duration-300 cursor-pointer group ${
-                  videoId === item.id
-                    ? "bg-purple-700 ring-2 ring-purple-800 text-black"
-                    : "bg-purple-600 hover:bg-purple-700 text-black"
-                }`}
-                onClick={() => handleClickLesson(item)}
-              >
-                <img
-                  src="/images/play.svg"
-                  alt="Play Icon"
-                  className="h-5 w-5 group-hover:scale-110 transition-transform"
-                />
-                <span className="text-sm lg:text-base font-medium">
-                  {item.title}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

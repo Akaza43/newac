@@ -1,0 +1,4 @@
+mkdir "1-Basic-Smart-Contract"
+mkdir "2-Smart-Contract-Execution"
+mkdir "3-Storage-and-Immutability"
+mkdir "4-Smart-Contract-Upgradeability"

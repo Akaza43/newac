@@ -1,0 +1,7 @@
+mkdir "1-Hot-Wallet-vs-Cold-Wallet-Doodle"
+mkdir "2-Setup-Ledger-Cold-Wallet"
+mkdir "3-Reset-Recover-Ledger"
+mkdir "4-Connect-Ledger-to-Ledger-Desktop-App"
+mkdir "5-Testnet-in-Ledger"
+mkdir "6-Connect-Cold-Wallet-to-Metamask"
+mkdir "7-Transaksi-dengan-Cold-Wallet"

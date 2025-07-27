@@ -1,0 +1,4 @@
+mkdir "1-Reentrancy-EXT"
+mkdir "2-Random-Generator-EXT"
+mkdir "3-Smart-Contract-Security-Auditing"
+mkdir "4-Security-Contest-and-Bug-Bounty"

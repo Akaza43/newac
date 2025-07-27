@@ -1,0 +1,3 @@
+mkdir "1-Ethereum-Scaling"
+mkdir "2-Ethereum-Optimistic-Rollup"
+mkdir "3-Ethereum-ZK-Rollup"

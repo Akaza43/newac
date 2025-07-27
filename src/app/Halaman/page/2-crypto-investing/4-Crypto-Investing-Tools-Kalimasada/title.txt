@@ -1,0 +1,5 @@
+mkdir "1-Basic-Crypto-Data"
+mkdir "2-Portofolio-Tracker"
+mkdir "3-Cryptocurrency-Wallet"
+mkdir "4-Crypto-Quantitative-Tools"
+mkdir "5-Blockchain-Fundamental-Tools"

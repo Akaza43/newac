@@ -1,0 +1,7 @@
+mkdir "01-Apa-itu-Token-Unlock"
+mkdir "02-Jenis-jenis-Token-Unlock"
+mkdir "03-Cara-Mendapatkan-Keuntungan-dengan-Airdrop-Unlock"
+mkdir "04-Penerapan-Trading-Airdrop-Unlock"
+mkdir "05-Cliff-Unlock-Trading-Strategy"
+mkdir "06-Dampak-Bullish-Cliff-Unlock-Play"
+mkdir "07-Penerapan-Cliff-Unlock-Trading-Strategy"

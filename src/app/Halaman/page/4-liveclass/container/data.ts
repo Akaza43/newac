@@ -1,6 +1,6 @@
 export const Data = [
   // {
-  //   id: "1", #INI BIARIN AJA KOSONG GINI BRO
+  //   id: "1",
   //   title: "The Art of Crypto Trading",
   //   drive: "",
   //   link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading",

@@ -1,0 +1,7 @@
+mkdir "1-Crypto-Self-Custody-Penjelasan-Self-Custody"
+mkdir "2-Crypto-Self-Custody-Berbagai-Jenis-Wallet"
+mkdir "3-Crypto-Self-Custody-Trezor-Safe-3"
+mkdir "4-Crypto-Self-Custody-Ledger-Nano-S-Plus"
+mkdir "5-Crypto-Self-Custody-Argent-X-Smart-Contract"
+mkdir "6-Crypto-Self-Custody-Gnosis-Safe-Multisig"
+mkdir "7-Crypto-Self-Custody-Rangkuman-dan-Final-Thoughts"

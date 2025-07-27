@@ -1,0 +1,3 @@
+mkdir "01-Intro-to-Narrative-Analysis"
+mkdir "02-How-to-be-Early-in-every-Narrative"
+mkdir "03-Portofolio-Allocation"

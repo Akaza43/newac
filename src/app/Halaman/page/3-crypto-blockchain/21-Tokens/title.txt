@@ -1,0 +1,3 @@
+mkdir "1-ERC20"
+mkdir "2-ERC721"
+mkdir "3-ERC4626"

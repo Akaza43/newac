@@ -1,0 +1,4 @@
+mkdir "01-Market-Cap"
+mkdir "02-Analytics"
+mkdir "03-Momentum"
+mkdir "04-Cara-Screening-Altcoin-dari-0"

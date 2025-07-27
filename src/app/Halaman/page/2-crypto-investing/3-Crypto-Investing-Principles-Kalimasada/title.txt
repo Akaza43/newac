@@ -1,0 +1,7 @@
+mkdir "1-Keyakinan"
+mkdir "2-Keberanian"
+mkdir "3-Keterbukaan"
+mkdir "4-Kedisiplinan"
+mkdir "5-Kesabaran"
+mkdir "6-Kebebasan"
+mkdir "7-Kelanjutan"

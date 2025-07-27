@@ -1,0 +1,8 @@
+mkdir "1-Pentingnya-Web3-Safety"
+mkdir "2-Secure-Private-Key-dan-Seed-Phrase"
+mkdir "3-Job-Interview-Scam"
+mkdir "4-Developer-Job-Scam"
+mkdir "5-Fake-Website-Scam"
+mkdir "6-Malicious-Files-dari-Sumber-Tak-Dikenal"
+mkdir "7-P2P-Scam-Risk"
+mkdir "8-Social-Engineering"
