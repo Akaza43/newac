@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-amoled text-white;
+  }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+
+@layer utilities {
+  .bg-blur {
+    @apply bg-black/50 backdrop-blur-lg;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: -0.5s;
+  }
+  
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, #ff000015 1px, transparent 1px),
+      linear-gradient(to bottom, #ff000015 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(132, 0, 255); /* red-600 with opacity */
+  border-radius: 5px;
+  border: 2px solid #111827;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(132, 0, 255);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(132, 0, 255) #111827;
+}
+
+.prevent-scroll {
+  overflow: hidden;
+}
+
+/* Tambahkan ini di bawah, setelah semua yang sudah kamu punya */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
+@media (max-width: 768px) {
+  .prevent-scroll {
+    overflow: auto !important;
+    overflow-x: hidden !important; /* Disable horizontal scrolling */
+  }
+}

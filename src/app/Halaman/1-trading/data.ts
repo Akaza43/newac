@@ -1,0 +1,123 @@
+export const tradingData = [
+    {
+    title: "Crypto Exit Strategy",
+    image: "/images/crypto-exit.jpeg", 
+    link: "/Halaman/page/1-crypto-trading/20-crypto-strategy",
+    category: "trading",
+  },
+  {
+    title: "Crypto Entry Mastery",
+    image: "/images/cam.jpg", 
+    link: "/Halaman/page/1-crypto-trading/15-cam",
+    category: "trading",
+  },
+    {
+    title: "Fundamental Research",
+    image: "/images/fundr.jpg", 
+    link: "/Halaman/page/1-crypto-trading/16-Fundamental-Research",
+    category: "trading",
+  },
+    {
+    title: "Mind Management",
+    image: "/images/minm.jpg", 
+    link: "/Halaman/page/1-crypto-trading/17-Mind-Management",
+    category: "trading",
+  },
+    {
+    title: "Money Management",
+    image: "/images/monm.jpg", 
+    link: "/Halaman/page/1-crypto-trading/18-Money-Managment",
+    category: "trading",
+  },
+    {
+    title: "Technical Research",
+    image: "/images/tecr.jpg", 
+    link: "/Halaman/page/1-crypto-trading/19-Technical-Research",
+    category: "trading",
+  },
+
+  {
+    title: "Crypto Spot Trading",
+    image: "/images/crypto-trading.jpg", 
+    link: "/Halaman/page/1-crypto-trading/01-Crypto-Trading-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Kamus Pattern Crypto",
+    image: "/images/kamus-pattern-crypto.jpg",
+    link: "/Halaman/page/1-crypto-trading/02-Kamus-Pattern-Crypto-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Technical Indicators",
+    image: "/images/crypto-technical-indicators.jpg",
+    link: "/Halaman/page/1-crypto-trading/03-Crypto-Technical-Indicators-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Fibonacci Secret",
+    image: "/images/ww.jpg",
+    link: "/Halaman/page/1-crypto-trading/04-Crypto-Fibonacci-Secret-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Smart Money",
+    image: "/images/crypto-smart-money.jpg",
+    link: "/Halaman/page/1-crypto-trading/05-Crypto-Smart-Money-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Order Flow",
+    image: "/images/crypto-order-flow.jpg",
+    link: "/Halaman/page/1-crypto-trading/06-Crypto-Order-Flow-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Harmonic Trading",
+    image: "/images/crypto-harmonic-trading.jpg",
+    link: "/Halaman/page/1-crypto-trading/07-Crypto-Harmonic-Trading-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Narrative Research",
+    image: "/images/narrative-research.jpg",
+    link: "/Halaman/page/1-crypto-trading/08-Narrative-Research-Kalimasada",
+    category: "trading",
+  },
+  {
+    title: "Crypto Money Psychology",
+    image: "/images/crypto-money-psychology.jpg",
+    link: "/Halaman/page/1-crypto-trading/09-Crypto-Money-Psychology",
+    category: "trading",
+  },
+  {
+    title: "Strategi Trading Crypto Untuk Dapetin 100jt Pertama",
+    image: "/images/strategi-trading-100jt.jpg",
+    link: "/Halaman/page/1-crypto-trading/10-Strategi-Trading-Crypto-Untuk-Dapetin-100jt-Pertama",
+    category: "trading",
+  },
+  {
+    title: "Crypto WyckOff Trading",
+    image: "/images/crypto-wyckoff-trading.jpg",
+    link: "/Halaman/page/1-crypto-trading/11-Crypto-WyckOff-Trading",
+    category: "trading",
+  },
+  {
+    title: "Token Unlock Trading Strategy",
+    image: "/images/pp.jpg",
+    link: "/Halaman/page/1-crypto-trading/12-Token-Unlock-Trading-Strategy",
+    category: "trading",
+  },
+  {
+    title: "DEX Trading Tutorial",
+    image: "/images/dex-trading-tutorial.jpg",
+    link: "/Halaman/page/1-crypto-trading/13-DEX-Trading-Tutorial",
+    category: "trading",
+  },
+  {
+    title: "Cara Screning Altcoin Dari 0",
+    image: "/images/aa.jpg",
+    link: "/Halaman/page/1-crypto-trading/14-Screening-Crypto-Cara-Screening-Altcoin-dari-0",
+    category: "trading",
+  },
+];

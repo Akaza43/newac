@@ -1,0 +1,100 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { ReusableGrid } from "@/components/ReusableGrid";
+
+export interface GridItem {
+  img: string;
+  title: string;
+  description: string;
+  price?: string;
+  discountPrice?: string;
+  buttons: { name: string; link: string }[];
+}
+
+const komunitasData: GridItem[] = [
+  {
+    img: "CSV.png",
+    title: "LIFTIME Access",
+    description: "Dapatkan akses seumur hidup ke semua konten",
+    price: "Rp 1,170,000",
+    discountPrice: "Rp 416,250",
+    buttons: [
+      { name: "Whatsapp", link: "https:/example.com/whatsapp-lifetime" },
+      { name: "lynk.id", link: "https:/example.com/lynk-lifetime" },
+      { name: "Shopee", link: "https:/example.com/shopee-lifetime" },
+    ],
+  },
+  {
+    img: "CSV.png",
+    title: "3 months access",
+    description: "Dapatkan akses ke semua konten kami selama 3 bulan.",
+    price: "Rp 337,500",
+    discountPrice: "Rp 168,750",
+    buttons: [
+      { name: "Whatsapp", link: "https:/example.com/whatsapp-3months" },
+      { name: "lynk.id", link: "https:/example.com/lynk-3months" },
+      { name: "Shopee", link: "https:/example.com/shopee-3months" },
+    ],
+  },
+  {
+    img: "CSV.png",
+    title: "1 year access",
+    description: "Dapatkan akses ke semua konten kami selama 1 tahun.",
+    price: "Rp 562,500",
+    discountPrice: "Rp 220,500",
+    buttons: [
+      { name: "Whatsapp", link: "https:/example.com/whatsapp-1year" },
+      { name: "lynk.id", link: "https:/example.com/lynk-1year" },
+      { name: "Shopee", link: "https:/example.com/shopee-1year" },
+    ],
+  },
+];
+
+export default function KomunitasPage() {
+  const { data: session } = useSession();
+  const [hasAccess, setHasAccess] = useState(false);
+
+  useEffect(() => {
+    const checkAccess = async () => {
+      if (session?.accessToken) {
+        try {
+          const response = await fetch("/api/verify-role", {
+            headers: {
+              Authorization: `Bearer ${session.accessToken}`,
+            },
+          });
+          setHasAccess(response.ok);
+        } catch (error) {
+          console.error("Error verifying role:", error);
+          setHasAccess(false);
+        }
+      }
+    };
+    checkAccess();
+  }, [session]);
+
+  return (
+    <div className="min-h-screen relative">
+      <div
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: "url('/background.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/80" />
+      </div>
+
+      <div className="relative z-10">
+        <h1 className="text-3xl font-bold text-white mb-8 text-center pt-8">
+          JOIN MIROR AC NOW!
+          <div className="mt-2 w-16 h-1 mx-auto bg-purple-500 rounded" />
+        </h1>
+
+        <ReusableGrid data={komunitasData} />
+      </div>
+    </div>
+  );
+}

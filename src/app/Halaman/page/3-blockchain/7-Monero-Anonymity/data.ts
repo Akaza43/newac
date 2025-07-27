@@ -1,0 +1,65 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1 Norway Cryptocurrency Ransom Case 2018",
+    drive: "https://drive.google.com/file/d/1TW3RxMqmvsvLimsT6YNIH5tLl9juIhfz/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/1-Norway-Cryptocurrency-Ransom-Case-2018",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "2",
+    title: "2 History of Monero",
+    drive: "https://drive.google.com/file/d/1TcQgWfBCiC_IoUd2qZhGooiBa9qWvUHs/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/2-History-of-Monero",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "3",
+    title: "3 Cryptocurrency Privacy Background",
+    drive: "https://drive.google.com/file/d/1TbBr-cDwnNaWXfrZFcz-MK3iuSLtjuCl/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/3-Cryptocurrency-Privacy-Background",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "4",
+    title: "4 Anonimity Monero as Cryptocurrency",
+    drive: "https://drive.google.com/file/d/1TYoJsNadFrlsu4_XJXAajBl-ScdRXZq2/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/4-Anonimity-Monero-as-Cryptocurrency",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "5",
+    title: "5 Monero Transaction Part 1",
+    drive: "https://drive.google.com/file/d/1TuYh6qdZHLzuKr5B6dLs9egSkSg-Fs-b/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/5-Monero-Transaction-Part-1",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "6",
+    title: "6 Monero Transaction Part 2",
+    drive: "https://drive.google.com/file/d/1Tj74bJKc_R0CR7zZelFNgEsPPoLlM-j8/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/6-Monero-Transaction-Part-2",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "7",
+    title: "7 Known Anonymity Problems",
+    drive: "https://drive.google.com/file/d/1TfRiI3bNuPRCxbBXdaq_2yO5quQ_kbyk/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/7-Known-Anonymity-Problems",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "8",
+    title: "8 Monero Ring Attack MRA",
+    drive: "https://drive.google.com/file/d/1TyjvyIZv-U_-M4hl9RnIMOeHrLX3HLlD/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/8-Monero-Ring-Attack-MRA",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "9",
+    title: "9 Problems of Key Reuse",
+    drive: "https://drive.google.com/file/d/1TvK7Cd3_uZv9e0gLBO7I7rt9vzXOwpDi/view?usp=drive_link",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/9-Problems-of-Key-Reuse",
+    category: "Crypto Blockchain",
+  }
+];

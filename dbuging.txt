@@ -1,0 +1,24 @@
+akademi crypto app
+└── src
+    ├── app
+    │   ├── page.tsx
+    ├── Halaman
+    │   ├── [page untuk halaman semua modul]
+    ├── public
+    │   └── images
+    │       └── [semua image]
+    ├── menu
+    │   └── [page untuk menu di bawah]
+    ├── constants
+    │   └── [menghubungkan semua kategori ke page]
+
+# login OAuth2 discord client [ok]
+# page [ok]
+# halaman [ok]
+# menu  page []
+# ui []
+
+kategori thenoise yang di ambil
+
+
+[login dbuging]
