@@ -365,9 +365,9 @@ const NewsPage = () => {
               
               <div className="p-6">
                 <div className="prose prose-invert max-w-none">
-                  <p className="text-gray-300 leading-relaxed">
+                  <div className="text-gray-300 leading-relaxed whitespace-pre-line">
                     {selectedNews.content}
-                  </p>
+                  </div>
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-gray-800 flex items-center justify-between">
