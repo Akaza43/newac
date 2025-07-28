@@ -1,25 +1,37 @@
 'use client';
+
 import { useRouter, usePathname } from "next/navigation";
-import { IoBookOutline, IoDocumentTextOutline, IoPeopleOutline, IoNewspaperOutline } from "react-icons/io5";
-import { domainConfigs, navigationLinks } from '@/components/data/links';
+import { useEffect, useState } from "react";
+import {
+  IoBookOutline,
+  IoDocumentTextOutline,
+  IoPeopleOutline,
+  IoNewspaperOutline,
+} from "react-icons/io5";
+import { domainConfigs, navigationLinks } from "@/components/data/links";
 
 const Menu = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const [komunitasUrl, setKomunitasUrl] = useState("/menu/komunitas");
+  const [komunitasExternal, setKomunitasExternal] = useState(false);
+
+  useEffect(() => {
+    const config = domainConfigs.find(d => d.hostname === window.location.hostname);
+    setKomunitasUrl(config?.url || "/menu/komunitas");
+    setKomunitasExternal(config?.openInNewTab ?? false);
+  }, []);
+
   const handleKomunitasClick = () => {
-    if (typeof window !== 'undefined') {
-      const config = domainConfigs.find(d => d.hostname === window.location.hostname);
-      if (config?.openInNewTab) {
-        window.open(config.url, '_blank');
-      } else {
-        router.push(navigationLinks.komunitas);
-      }
+    if (komunitasExternal) {
+      window.open(komunitasUrl, "_blank");
+    } else {
+      router.push(komunitasUrl);
     }
   };
 
-  const isActive = (currentPath: string | null, path: string) =>
-    currentPath?.startsWith(path);
+  const isActive = (path: string) => pathname?.startsWith(path);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black/90 border-t border-gray-900 z-50">
@@ -28,7 +40,7 @@ const Menu = () => {
         <button
           onClick={() => router.push(navigationLinks.news)}
           className={`flex flex-col items-center p-4 flex-1 ${
-            isActive(pathname, navigationLinks.news)
+            isActive(navigationLinks.news)
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}
@@ -41,7 +53,7 @@ const Menu = () => {
         <button
           onClick={() => router.push(navigationLinks.home)}
           className={`flex flex-col items-center p-4 flex-1 ${
-            isActive(pathname, navigationLinks.home)
+            isActive(navigationLinks.home)
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}
@@ -54,7 +66,7 @@ const Menu = () => {
         <button
           onClick={() => router.push(navigationLinks.research)}
           className={`flex flex-col items-center p-4 flex-1 ${
-            isActive(pathname, navigationLinks.research)
+            isActive(navigationLinks.research)
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}
@@ -67,7 +79,7 @@ const Menu = () => {
         <button
           onClick={handleKomunitasClick}
           className={`flex flex-col items-center p-4 flex-1 ${
-            isActive(pathname, navigationLinks.komunitas)
+            pathname === "/menu/komunitas"
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}

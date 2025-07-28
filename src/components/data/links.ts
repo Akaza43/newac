@@ -28,6 +28,6 @@ export const getKomunitasLink = () => {
 export const navigationLinks = {
   home: "/",
   research: "/menu/research",
-  news: "menu/news", // Pastikan ini ada
+  news: "/menu/news", // Pastikan ini ada
   komunitas: getKomunitasLink(),
 };

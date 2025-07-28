@@ -75,18 +75,13 @@ export default function KomunitasPage() {
     <div className="min-h-screen relative">
       <div
         className="fixed inset-0 z-0"
-        style={{
-          backgroundImage: "url('/background.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
         <div className="absolute inset-0 bg-black/80" />
       </div>
 
       <div className="relative z-10">
         <h1 className="text-3xl font-bold text-white mb-8 text-center pt-8">
-          JOIN AC FOR ALL NOW!
+          JOIN NOW!
           <div className="mt-2 w-16 h-1 mx-auto bg-purple-500 rounded" />
         </h1>
 

@@ -17,6 +17,20 @@
   animation: marquee 30s linear infinite;
 }
 
+/* globals.css or a dedicated CSS file */
+
+@keyframes bg-pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.animate-bg-pan {
+  animation: bg-pan 30s linear infinite alternate; /* Adjust duration and direction as needed */
+}
 
 @layer utilities {
   .bg-blur {

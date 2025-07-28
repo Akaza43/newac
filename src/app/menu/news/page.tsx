@@ -79,7 +79,7 @@ const CryptoTicker = () => {
 
   if (loading) {
     return (
-      <div className="h-16 bg-gray-900 flex items-center justify-center">
+      <div className="h-16 bg-black flex items-center justify-center">
         <div className="animate-pulse flex space-x-4">
           <div className="rounded-full bg-gray-800 h-6 w-6"></div>
           <div className="rounded-full bg-gray-800 h-6 w-6"></div>
@@ -102,7 +102,7 @@ const CryptoTicker = () => {
   const duplicatedItems = [...tickerItems, ...tickerItems];
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-purple-900/30 to-blue-900/30 border-b border-gray-800">
+    <div className="relative overflow-hidden bg-gradient-to-r from-black to-black border-b border-gray-800">
       <div className="py-3">
         <div className="relative">
           {/* Infinite scrolling ticker */}
@@ -173,7 +173,7 @@ const CryptoTicker = () => {
 };
 
 // Main Component
-const NewsPage = () => {
+export default function NewsPage() {
   const { data: session, status } = useSession();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
@@ -183,7 +183,6 @@ const NewsPage = () => {
   const [news, setNews] = useState<any[]>([]);
   const [loadingNews, setLoadingNews] = useState(true);
 
-  // Check user access
   useEffect(() => {
     const checkAccess = async () => {
       if (session?.accessToken) {
@@ -198,9 +197,14 @@ const NewsPage = () => {
             setTimeout(checkAccess, 5000);
             return;
           }
-          
-          setHasAccess(response.ok);
+
+          if (response.ok) {
+            setHasAccess(true);
+          } else {
+            setHasAccess(false);
+          }
         } catch (error) {
+          console.error("Error verifying role:", error);
           setHasAccess(false);
         }
       } else {
@@ -209,8 +213,9 @@ const NewsPage = () => {
       setLoading(false);
     };
 
-    if (status === "authenticated") checkAccess();
-    else if (status === "unauthenticated") {
+    if (status === "authenticated") {
+      checkAccess();
+    } else if (status === "unauthenticated") {
       setLoading(false);
       setHasAccess(false);
     }
@@ -235,57 +240,38 @@ const NewsPage = () => {
   }, []);
 
   // Loading state
-  if (loading || status === "loading" || loadingNews) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-950">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-purple-200 font-medium">Loading Crypto Pulse...</p>
-        </div>
-      </div>
-    );
+  console.log('Loading states:', { loading, loadingNews, status, hasAccess });
+  if (loading || status === "loading") {
+    return <Loading />;
   }
 
   // Auth states
   if (!session) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-950 p-4">
-        <div className="max-w-md w-full bg-gray-900/80 backdrop-blur-lg rounded-xl border border-gray-800 p-8 shadow-2xl">
-          <div className="text-center mb-8">
-            <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-              Crypto Insider Access
-            </h2>
-            <p className="text-gray-400 mt-2 text-sm">
-              Unlock premium crypto insights and market analysis
-            </p>
-          </div>
-          
-          <ul className="space-y-3 mb-8">
-            {['Real-time market data', 'Exclusive research reports', 'Premium community access', 'Daily trading signals'].map((item, i) => (
-              <li key={i} className="flex items-center gap-3 text-gray-300">
-                <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center">
-                  <svg className="w-3 h-3 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-sm">{item}</span>
+      <div className="min-h-screen flex items-center justify-center bg-black px-4">
+        <div className="auth-box bg-zinc-950/90 p-8 rounded-2xl backdrop-blur-md max-w-md w-full border border-zinc-900">
+          <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-4">
+            Login untuk Akses Penuh
+          </h2>
+          <div className="text-gray-400 mb-6 text-sm">
+            <p>Silahkan login untuk mengakses semua fitur premium kami:</p>
+            <ul className="mt-2 space-y-1">
+              <li className="flex items-center gap-2">
+                <span className="text-purple-400">•</span> Modul pembelajaran crypto
               </li>
-            ))}
-          </ul>
-          
+              <li className="flex items-center gap-2">
+                <span className="text-blue-400">•</span> Research dan analisis pasar
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green-400">•</span> Komunitas ekslusif
+              </li>
+            </ul>
+          </div>
           <button
             onClick={() => signIn("discord")}
-            className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20"
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold hover:opacity-90 transition-opacity"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 127.14 96.36">
-              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-            </svg>
-            Continue with Discord
+            <i className="fas fa-lock-open mr-2"></i> Masuk dengan Discord
           </button>
         </div>
       </div>
@@ -294,32 +280,21 @@ const NewsPage = () => {
 
   if (!hasAccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-950 p-4">
-        <div className="max-w-md w-full bg-gray-900/80 backdrop-blur-lg rounded-xl border border-gray-800 p-8 shadow-2xl">
-          <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-rose-600 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-pink-400">
-              Restricted Access
-            </h2>
-            <p className="text-gray-400 mt-2 text-sm">
-              Your account doesn't have permission to access this content
-            </p>
-          </div>
-          
-          <div className="flex flex-col gap-3">
+      <div className="min-h-screen flex items-center justify-center bg-black px-4">
+        <div className="auth-box bg-zinc-950/90 p-8 rounded-2xl backdrop-blur-md max-w-md w-full border border-zinc-900">
+          <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-400 mb-6">
+            Akses Ditolak
+          </h2>
+          <p className="text-gray-400 mb-6">
+            Anda tidak memiliki akses ke halaman ini. Silakan hubungi admin untuk informasi lebih lanjut.
+          </p>
+          <div className="flex gap-4">
             <AccessButton />
             <button
               onClick={() => signOut()}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-rose-600 to-pink-600 text-white font-medium hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
+              className="flex-1 py-3 rounded-lg bg-gradient-to-r from-red-600 to-pink-600 text-white font-semibold hover:opacity-90 transition-opacity"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-              </svg>
-              Sign Out
+              <i className="fas fa-sign-out-alt mr-2"></i> Keluar
             </button>
           </div>
         </div>
@@ -332,7 +307,7 @@ const NewsPage = () => {
     const selectedNews = news.find(item => item.id === selectedNewsId);
     
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950">
+      <div className="min-h-screen bg-gradient-to-b from-black to-black">
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <button
             onClick={() => setSelectedNewsId(null)}
@@ -420,7 +395,7 @@ const NewsPage = () => {
 
   // Main news feed view
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-black to-black pb-20">
       <CryptoTicker />
       
       {/* Featured news */}
@@ -483,5 +458,3 @@ const NewsPage = () => {
     </div>
   );
 };
-
-export default NewsPage;

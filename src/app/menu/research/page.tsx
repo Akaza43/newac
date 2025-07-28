@@ -39,7 +39,7 @@ const ReusableGrid = ({ data }: { data: GridItem[] }) => {
                 <h3 className="font-semibold mt-1 text-white">{item.title}</h3>
                 <button
                   onClick={() => window.open(item.link, "_blank")}
-                  className="mt-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                  className="mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-blue-500/20"
                 >
                   <span>View Research</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,11 +280,6 @@ export default function ResearchPage() {
       {/* Background */}
       <div
         className="fixed inset-0 z-0"
-        style={{
-          backgroundImage: "url('/background.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
         <div className="absolute inset-0 bg-black/80" />
       </div>
