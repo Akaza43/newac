@@ -319,74 +319,44 @@ export default function NewsPage() {
             Back to News
           </button>
           
-          {selectedNews ? (
+          {selectedNews && (
             <article className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl">
-              <div className="relative h-64 w-full overflow-hidden">
-                <img 
-                  src={selectedNews.image} 
-                  alt={selectedNews.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block px-3 py-1 bg-purple-600/80 text-white text-xs font-medium rounded-full backdrop-blur-sm">
-                    {formatTimeAgo(selectedNews.createdAt)}
-                  </span>
-                  <h1 className="mt-3 text-3xl font-bold text-white leading-tight">
-                    {selectedNews.title}
-                  </h1>
+
+              {/* WAKTU & JUDUL */}
+              <div className="p-6 pb-2">
+                <p className="text-sm text-purple-400 font-medium">
+                  {formatTimeAgo(selectedNews.createdAt)}
+                </p>
+                <h1 className="mt-2 text-2xl md:text-3xl font-bold text-white leading-snug">
+                  {selectedNews.title}
+                </h1>
+              </div>
+
+              {/* GARIS PEMBATAS */}
+              <hr className="border-gray-700 mx-6" />
+
+              {/* GAMBAR */}
+              <div className="p-6 pb-0">
+                <div className="w-full overflow-hidden rounded-xl border-2 border-gray-800">
+                  <img 
+                    src={selectedNews.image} 
+                    alt={selectedNews.title}
+                    className="w-full h-auto object-contain" // object-contain agar tidak zoom
+                  />
+                </div>
+              </div>
+
+              {/* GARIS PEMBATAS */}
+              <hr className="border-gray-700 mx-6 mt-6" />
+
+              {/* KONTEN */}
+              <div className="p-6 pt-2">
+                <div className="text-gray-300 leading-relaxed whitespace-pre-line">
+                  {selectedNews.content}
                 </div>
               </div>
               
-              <div className="p-6">
-                <div className="prose prose-invert max-w-none">
-                  <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                    {selectedNews.content}
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-gray-800 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
-                      <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20">
-                      </svg>
-                      <img src="/ac.png" alt="sc" className="w-10 h-10" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-200">AC News</p>
-                      <p className="text-xs text-gray-500">Crypto Journalist</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-3">
-                    <button className="w-9 h-9 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                      </svg>
-                    </button>
-                    <button className="w-9 h-9 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
             </article>
-          ) : (
-            <div className="text-center py-20">
-              <svg className="w-16 h-16 text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h3 className="mt-4 text-lg font-medium text-gray-300">Article Not Found</h3>
-              <p className="mt-2 text-gray-500">The requested news article could not be loaded.</p>
-              <button
-                onClick={() => setSelectedNewsId(null)}
-                className="mt-6 px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
-              >
-                Back to News
-              </button>
-            </div>
           )}
         </div>
       </div>

@@ -1,11 +1,5 @@
 export const investingData = [
   {
-    title: "Crypto Investing Tools",
-    image: "/images/cit.jpg",
-    link: "/Halaman/page/2-crypto-investing/10-crypto-investing-tools",
-    category: "investing",
-  },
-  {
     title: "Crypto Melakukan Portofolio Manajement",
     image: "/images/cpm.jpg",
     link: "/Halaman/page/2-crypto-investing/9-cpm",
