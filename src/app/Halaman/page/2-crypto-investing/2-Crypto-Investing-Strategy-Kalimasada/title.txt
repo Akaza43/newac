@@ -1,7 +1,0 @@
-mkdir "1-Strategi-Bajing-Loncat"
-mkdir "2-Strategi-Serigala-Domba"
-mkdir "3-Strategi-Moon-Bag"
-mkdir "4-Strategi-Gulung-gulung"
-mkdir "5-Strategi-Tebar-Jala"
-mkdir "6-Strategi-Terkonsentrasi"
-mkdir "7-Strategi-Cicilan"

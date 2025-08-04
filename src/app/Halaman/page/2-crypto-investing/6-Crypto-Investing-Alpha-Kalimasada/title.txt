@@ -1,7 +1,0 @@
-mkdir "1-The-Elevator-Concept"
-mkdir "2-Konsep-Pagi-Siang-Malam"
-mkdir "3-The-Wallet-Tracker-The-Crypto-Stalker"
-mkdir "4-Analisis-Sentimen-Fear-and-Greed"
-mkdir "5-Stock-To-Flow-Model"
-mkdir "6-Cara-Memeriksa-Smart-Contract"
-mkdir "7-Miximizing-AI-To-Beat-a-Market"

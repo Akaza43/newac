@@ -1,0 +1,58 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1 Pengenalan Blockchain Tech di Balik Cryptocurrency",
+    drive: "https://youtu.be/QlQ5eO3vYWE?si=-Q4KAXDMimnx9ZDt",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/1-Pengenalan-Blockchain-Tech-di-Balik-Cryptocurrency",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "2",
+    title: "2 Sejarah Dari Bitcoin",
+    drive: "https://youtu.be/l-5xkgzU3qo?si=KtV9PoXe9acGQkGb",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/2-Sejarah-Dari-Bitcoin",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "3",
+    title: "3 Sejarah Dari Altcoin",
+    drive: "https://youtu.be/to19Wxygczc?si=4ZUlrYG9MjSaLJGD",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/3-Sejarah-Dari-Altcoin",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "4",
+    title: "4 Crypto Market Cycle Theory",
+    drive: "https://youtu.be/udz7TCPXoAU?si=KSmQhqvLPYlBZFOc",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/4-Crypto-Market-Cycle-Theory",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "5",
+    title: "5 Bedah Pilihan Investasi Terbaik",
+    drive: "https://youtu.be/2QISC-oqA1c?si=Q9kPLoeWRo6phOWG",
+    link: "/Halaman/page/3-crypto-blockchain34-From History-To-Market-Mastery/5-Bedah-Pilihan-Investasi-Terbaik",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "6",
+    title: "6 Kapan Waktu Membeli Crypto yang Tepat",
+    drive: "https://youtu.be/hYim4fN5-pI?si=s7vnc1QOkrZlvEwD",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/6-Kapan-Waktu-Membeli-Crypto-yang-Tepat",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "7",
+    title: "7 Altcoins & Paradox of Choices",
+    drive: "https://youtu.be/AD4H0ZAHUO0?si=0m_4Jyk5XlYqwivv",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/7-Altcoins-&-Paradox-of-Choices",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "8",
+    title: "8 Kenapa Narrative di Crypto Sengaja Diciptakan?",
+    drive: "https://youtu.be/E3JI1AOqyNc?si=HBAnqD8MU_2RAeZF",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery/8-Kenapa-Narrative-di-Crypto-Sengaja-Diciptakan?",
+    category: "Crypto Blockchain",
+  },
+];

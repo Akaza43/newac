@@ -1,0 +1,51 @@
+export const Data = [
+  {
+    id: "1",
+    title: "Intro to Modern Day Crypto Trading",
+    drive: "https://youtu.be/-6OQZ7OrtYE",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/1-Intro-to-Modern-Day-Crypto-Trading",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "2",
+    title: "How to Transform a Crypto Bro into Crypto Pro",
+    drive: "https://youtu.be/m_9rZX7pjF8",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/2-How-to-Transform-a-Crypto-Bro-into-Crypto-Pro",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "3",
+    title: "Deep Understanding of Narrative Research",
+    drive: "https://youtu.be/HMcYyD-OGag",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/3-Deep-Understanding-of-Narrative-Research",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "4",
+    title: "Deep Understanding of Fundamental Research",
+    drive: "https://youtu.be/B6EpxwLnUnk",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/4-Deep-Understanding-of-Fundamental-Research",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "5",
+    title: "Deep Understanding of Technical Research",
+    drive: "https://youtu.be/i2zSn9AFLDI",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/5-Deep-Understanding-of-Technical-Research",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "6",
+    title: "Comprehensive Guide on How to Market Timing and Market Positioning",
+    drive: "https://youtu.be/uFmk6x7RnkQ",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/6-Comprehensive-Guide-on-How-to-Market-Timing-and-Market-Positioning",
+    category: "The Art of Crypto Trading",
+  },
+  {
+    id: "7",
+    title: "Step by Step Portfolio Allocation and Portfolio Management",
+    drive: "https://youtu.be/r1IcvJTNKQ4",
+    link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/7-Step-by-Step-Portfolio-Allocation-and-Portfolio-Management",
+    category: "The Art of Crypto Trading",
+  },
+];

@@ -1,2 +1,0 @@
-mkdir "1-Blockchain-Trilemma"
-mkdir "2-How-To-Solve-Blockchain-Trilemma"

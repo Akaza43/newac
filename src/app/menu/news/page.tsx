@@ -34,6 +34,39 @@ const formatTimeAgo = (timestamp: string) => {
   return `${Math.floor(diffInSeconds / 31536000)}tahun yang lalu`;
 };
 
+// Google Drive link detection and conversion utility
+const getGoogleDriveEmbedUrl = (url: string) => {
+  const matches = url.match(/\/d\/(.+?)(?:\/|$|\?)/);
+  const fileId = matches ? matches[1] : '';
+  
+  return `https://drive.google.com/file/d/${fileId}/preview`;
+};
+
+// Component to render image or Google Drive embed
+const MediaRenderer = ({ src, alt, className = "w-full h-auto object-contain" }: { src: string; alt: string; className?: string }) => {
+  // Check if it's a Google Drive link
+  if (src.includes('drive.google.com')) {
+    const convertedUrl = getGoogleDriveEmbedUrl(src);
+    return (
+      <iframe
+        src={convertedUrl}
+        className="w-full h-96 border-0 rounded-lg"
+        title={alt}
+        allowFullScreen
+      />
+    );
+  }
+  
+  // Regular image
+  return (
+    <img 
+      src={src} 
+      alt={alt}
+      className={className}
+    />
+  );
+};
+
 // Crypto ticker component
 const CryptoTicker = () => {
   const [cryptoData, setCryptoData] = useState<{
@@ -338,10 +371,10 @@ export default function NewsPage() {
               {/* GAMBAR */}
               <div className="p-6 pb-0">
                 <div className="w-full overflow-hidden rounded-xl border-2 border-gray-800">
-                  <img 
+                  <MediaRenderer 
                     src={selectedNews.image} 
                     alt={selectedNews.title}
-                    className="w-full h-auto object-contain" // object-contain agar tidak zoom
+                    className="w-full h-auto object-contain"
                   />
                 </div>
               </div>
@@ -376,7 +409,7 @@ export default function NewsPage() {
             onClick={() => setSelectedNewsId(news[0].id)}
             className="relative rounded-xl overflow-hidden cursor-pointer group"
           >
-            <img 
+            <MediaRenderer 
               src={news[0].image} 
               alt={news[0].title}
               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
@@ -414,7 +447,7 @@ export default function NewsPage() {
                   </p>
                 </div>
                 <div className="w-20 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
+                  <MediaRenderer 
                     src={item.image} 
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

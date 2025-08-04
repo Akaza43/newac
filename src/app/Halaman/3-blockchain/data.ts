@@ -1,5 +1,41 @@
 export const blockchainData = [
   {
+    title: "Bitcoin UTXO Model",
+    image: "/images/utx-mode.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/35-Bitcoin-UTXO-Model",
+    category: "blockchain"
+  },
+  {
+    title: "Lightning Network",
+    image: "/images/l-netwrok.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/38-Lightning-Network",
+    category: "blockchain"
+  },
+  {
+    title: "From History To Market Mastery",
+    image: "/images/from-histori.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/34-From History-To-Market-Mastery",
+    category: "blockchain"
+  },
+  {
+    title: "Smart Legal Contracts",
+    image: "/images/smart-legal.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/33-Smart-Legal-Contracts",
+    category: "blockchain"
+  },
+  {
+    title: "Liquid Staking",
+    image: "/images/liquid-staking.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/36-Liquid-Staking-&-Liquid Restaking Token",
+    category: "blockchain"
+  },
+  {
+    title: "Dao",
+    image: "/images/dao.jpeg",
+    link: "/Halaman/page/3-crypto-blockchain/37-Decentralised-Autonomous-Organisation",
+    category: "blockchain"
+  },
+  {
     title: "Blockchain & Ai",
     image: "/images/b&ai.jpg",
     link: "/Halaman/page/3-crypto-blockchain/31-B&ai",

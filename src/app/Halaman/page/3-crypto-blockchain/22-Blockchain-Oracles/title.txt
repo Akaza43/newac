@@ -1,2 +1,0 @@
-mkdir "1-Price-Oracle"
-mkdir "2-TWAP"

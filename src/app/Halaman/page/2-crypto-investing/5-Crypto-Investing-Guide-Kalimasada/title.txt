@@ -1,8 +1,0 @@
-mkdir "1-Apakah-Bisa-Kaya-Tanpa-Investasi"
-mkdir "2-Efek-Kupu-Kupu"
-mkdir "3-Men-Lie-Woman-Lie-Numbers-Dont"
-mkdir "4-Berinvestasi-Crypto-Mulai-Dari-Mana"
-mkdir "5-Investor-VS-Bajing-Loncat"
-mkdir "6-Dimana-Saya-Beli-Crypto"
-mkdir "7-Dimana-Tempat-Menyimpan-Crypto-Saya"
-mkdir "8-Saya-Siap-Menjadi-Seorang-Investor-Cryptocurrency"

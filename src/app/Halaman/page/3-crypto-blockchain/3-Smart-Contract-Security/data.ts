@@ -1,0 +1,72 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1 Smart Contract Security Context",
+    drive: "https://youtu.be/oTnOPQ0CmDA",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/1-Smart-Contract-Security-Context",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "2",
+    title: "2 How to Become a Security Auditor Requirements",
+    drive: "https://youtu.be/1k4krMsisvs",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/2-How-to-Become-a-Security-Auditor-Requirements",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "3",
+    title: "3 How to Become a Security Auditor Experience",
+    drive: "https://youtu.be/RiEiz75tDVM",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/3-How-to-Become-a-Security-Auditor-Experience",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "4",
+    title: "4 How to Become a Security Auditor Risks",
+    drive: "https://youtu.be/bVL1tEoA13g",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/4-How-to-Become-a-Security-Auditor-Risks",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "5",
+    title: "5 Smart Contract Security Overview",
+    drive: "https://youtu.be/N4n1kIrbYIA",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/5-Smart-Contract-Security-Overview",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "6",
+    title: "6 What is Smart Contract Security",
+    drive: "https://youtu.be/wYvvRJz-T44",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/6-What-is-Smart-Contract-Security",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "7",
+    title: "7 Security Auditing Process",
+    drive: "https://youtu.be/sdsI6vxiV9k",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/7-Security-Auditing-Process",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "8",
+    title: "8 Tools and Techniques",
+    drive: "https://youtu.be/OH_ZHW3Bzfk",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/8-Tools-and-Techniques",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "9",
+    title: "9 Security Challenges Part 1",
+    drive: "https://youtu.be/xeMReXuPG7c",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/9-Security-Challenges-Part-1",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "10",
+    title: "10 Security Challenges Part 2",
+    drive: "https://youtu.be/OeVY3sb_sU4",
+    link: "/Halaman/page/3-crypto-blockchain/3-Smart-Contract-Security/10-Security-Challenges-Part-2",
+    category: "Crypto Blockchain",
+  }
+];

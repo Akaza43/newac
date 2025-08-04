@@ -1,7 +1,0 @@
-mkdir "1-Memahami-Cara-Kerja-Uang"
-mkdir "2-The-History-of-Bitcoin"
-mkdir "3-The-History-of-Bitcoin-2"
-mkdir "4-Investment-Options"
-mkdir "5-Investment-Portion"
-mkdir "6-Market-Cycle-Theory"
-mkdir "7-Formula-to-Success-in-Crypto"

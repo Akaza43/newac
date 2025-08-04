@@ -1,7 +1,0 @@
-mkdir "1-Intro-to-Modern-Day-Crypto-Trading"
-mkdir "2-How-to-Transform-a-Crypto-Bro-into-Crypto-Pro"
-mkdir "3-Deep-Understanding-of-Narrative-Research"
-mkdir "4-Deep-Understanding-of-Fundamental-Research"
-mkdir "5-Deep-Understanding-of-Technical-Research"
-mkdir "6-Comprehensive-Guide-on-How-to-Market-Timing-and-Market-Positioning"
-mkdir "7-Step-by-Step-Portfolio-Allocation-and-Portfolio-Management"

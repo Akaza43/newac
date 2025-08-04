@@ -1,0 +1,65 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1 Norway Cryptocurrency Ransom Case 2018",
+    drive: "https://youtu.be/1j1O7nbtzyw",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/1-Norway-Cryptocurrency-Ransom-Case-2018",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "2",
+    title: "2 History of Monero",
+    drive: "https://youtu.be/QbElo9dLckA",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/2-History-of-Monero",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "3",
+    title: "3 Cryptocurrency Privacy Background",
+    drive: "https://youtu.be/XsirIm1bhvQ",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/3-Cryptocurrency-Privacy-Background",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "4",
+    title: "4 Anonimity Monero as Cryptocurrency",
+    drive: "https://youtu.be/ejgISJa3ZWI",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/4-Anonimity-Monero-as-Cryptocurrency",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "5",
+    title: "5 Monero Transaction Part 1",
+    drive: "https://youtu.be/yVw9TEXH0qA",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/5-Monero-Transaction-Part-1",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "6",
+    title: "6 Monero Transaction Part 2",
+    drive: "https://youtu.be/wZCN8jU5yCs",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/6-Monero-Transaction-Part-2",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "7",
+    title: "7 Known Anonymity Problems",
+    drive: "https://youtu.be/rrmIQWiYwJ8",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/7-Known-Anonymity-Problems",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "8",
+    title: "8 Monero Ring Attack MRA",
+    drive: "https://youtu.be/JrtL9QmUspE",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/8-Monero-Ring-Attack-MRA",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "9",
+    title: "9 Problems of Key Reuse",
+    drive: "https://youtu.be/RW9R6AJlySQ",
+    link: "/Halaman/page/3-crypto-blockchain/7-Monero-Anonymity/9-Problems-of-Key-Reuse",
+    category: "Crypto Blockchain",
+  }
+];

@@ -1,0 +1,65 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1 Introduction to Crypto Research",
+    drive: "https://youtu.be/vCKHX-CYvU4",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/1-Introduction-to-Crypto-Research",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "2",
+    title: "2 Value Proposition and Qualitative Analysis",
+    drive: "https://youtu.be/J1V4wTWYqUg",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/2-Value-Proposition-and-Qualitative-Analysis",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "3",
+    title: "3 Quantitative Analysis",
+    drive: "https://youtu.be/ZtWxaWp2Qbg",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/3-Quantitative-Analysis",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "4",
+    title: "4 Token Terminal Tutorial",
+    drive: "https://youtu.be/yJ5ITDXtBvg",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/4-Token-Terminal-Tutorial",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "5",
+    title: "5 Opinion Strategy and Follow Up",
+    drive: "https://youtu.be/9Rz_P-gPDuE",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/5-Opinion-Strategy-and-Follow-Up",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "6",
+    title: "6 Blockchain Economics",
+    drive: "https://youtu.be/HHM3PQx7AVg",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/6-Blockchain-Economics",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "7",
+    title: "7 Introduction to Crypto Airdrop",
+    drive: "https://youtu.be/ZsD6AwOSrxc",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/7-Introduction-to-Crypto-Airdrop",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "8",
+    title: "8 ZkSync Airdrop Tutorial",
+    drive: "https://youtu.be/OD8m5oUpB7E",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/8-ZkSync-Airdrop-Tutorial",
+    category: "Crypto Blockchain",
+  },
+  {
+    id: "9",
+    title: "9 Layer Zero",
+    drive: "https://youtu.be/Zc4UNUH-CYc",
+    link: "/Halaman/page/3-crypto-blockchain/10-Crypto-Research/9-Layer-Zero",
+    category: "Crypto Blockchain",
+  }
+];

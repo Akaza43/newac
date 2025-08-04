@@ -19,7 +19,7 @@ export default function HomePage() {
   const [isTrialUser, setIsTrialUser] = useState(false);
 
   const links = {
-    startLearning: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading/1-Intro-to-Modern-Day-Crypto-Trading",
+    startLearning: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading",
     moreInfo: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading"
   };
 
@@ -170,7 +170,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="mt-2 md:mt-8">
+          <div className="mt-2 md:mt-8 scale">
             <AllClassesPage />
           </div>
           <div className="mt-2 md:mt-8">
