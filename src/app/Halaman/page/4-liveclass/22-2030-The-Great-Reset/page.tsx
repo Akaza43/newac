@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const getGoogleDriveEmbedUrl = (url: string) => {
-  const matches = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  const videoId = matches ? matches[1] : "";
-  return `https://www.youtube.com/embed/${videoId}`;
+  const matches = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  const fileId = matches ? matches[1] : "";
+  return `https://drive.google.com/file/d/${fileId}/preview`;
 };
 
 export default function Container() {
