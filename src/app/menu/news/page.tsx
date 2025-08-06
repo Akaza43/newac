@@ -45,7 +45,7 @@ const getGoogleDriveEmbedUrl = (url: string) => {
 // Component to render image or Google Drive embed
 const MediaRenderer = ({ src, alt, className = "w-full h-auto object-contain" }: { src: string; alt: string; className?: string }) => {
   // Check if it's a Google Drive link
-  if (src.includes('drive.google.com')) {
+  if (src && src.includes('drive.google.com')) {
     const convertedUrl = getGoogleDriveEmbedUrl(src);
     return (
       <iframe
