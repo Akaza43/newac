@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { Data } from "../01-Crypto-Trading-Kalimasada/data";
+import { Data } from "./data";
 import Loading from "@/ui/loading";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
