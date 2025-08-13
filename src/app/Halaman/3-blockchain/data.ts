@@ -1,5 +1,11 @@
 export const blockchainData = [
   {
+    title: "Core Blockchain & Consensus Topics",
+    image: "/images/core-blokchain-consensus.webp",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics",
+    category: "blockchain"
+  },
+  {
     title: "Bitcoin UTXO Model",
     image: "/images/utx-mode.jpeg",
     link: "/Halaman/page/3-crypto-blockchain/35-Bitcoin-UTXO-Model",

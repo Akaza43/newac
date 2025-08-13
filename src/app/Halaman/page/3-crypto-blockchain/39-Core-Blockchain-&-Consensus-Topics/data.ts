@@ -1,0 +1,72 @@
+export const Data = [
+  {
+    id: "1",
+    title: "1. Evolution of Blockchain Governance",
+    drive: "https://youtu.be/4LgJmMNzXz4?si=6BOWtcTULWaBn0MM",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "2",
+    title: "2. History of Layer 1 Blockchains",
+    drive: "https://youtu.be/bSwpuiYfmrQ?si=3eZZPxyOYp7Vvlgn",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "3",
+    title: "3. Blockchain Finality",
+    drive: "https://youtu.be/2jCamVmnxrY?si=EedDtxfobe_K4az_",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "4",
+    title: "4. Permissioned vs Permissionless Blockchains",
+    drive: "https://youtu.be/wZIQHp6xjWc?si=HCkO1FaiJ-T21iNw",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "5",
+    title: "5. Light Clients",
+    drive: "https://youtu.be/bW4VXCtlQxg?si=KT51_9uS8QuvrqLw",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "6",
+    title: "6. State Bloat",
+    drive: "https://youtu.be/_3s8g3_2a3U?si=KcCXXBOuTSm5SQG1",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "7",
+    title: "7. BFT vs Nakamoto Consensus",
+    drive: "https://youtu.be/vMqj-JuGkqE?si=x8hkTo7-euhVayOg",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "8",
+    title: "8. Blockchain Economis",
+    drive: "https://youtu.be/V2cFLN9RgBQ?si=yJsZULYbPUuPNSL8",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "9",
+    title: "9. MEV",
+    drive: "https://youtu.be/qKKNjtelL9A?si=uk99rmrWFe_c5LhL",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  },
+  {
+    id: "10",
+    title: "10. Onchain vs Offchain Governance Models",
+    drive: "https://youtu.be/voeAwnXZyUI?si=vXT0quDg77_PXbIA",
+    link: "/Halaman/page/3-crypto-blockchain/39-Core-Blockchain-&-Consensus-Topics/1-Lightning-Network",
+    category: "Core Blockchain & Consensus Topics",
+  }
+];

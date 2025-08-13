@@ -1,5 +1,11 @@
 export const investingData = [
   {
+    title: "Crypto Risk Management",
+    image: "/images/crypto-risk-management.webp",
+    link: "/Halaman/page/2-crypto-investing/10-Crypto-Risk-Management",
+    category: "investing",
+  },
+  {
     title: "Crypto Melakukan Portofolio Manajement",
     image: "/images/cpm.jpg",
     link: "/Halaman/page/2-crypto-investing/9-cpm",
