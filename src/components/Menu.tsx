@@ -35,7 +35,7 @@ const Menu = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black/90 border-t border-gray-900 z-50">
-      <nav className="flex justify-around max-w-md mx-auto">
+      <nav className="flex justify-around w-full">
         {/* NEWS */}
         <button
           onClick={() => router.push(navigationLinks.news)}

@@ -1,5 +1,11 @@
 export const liveclassData= [
   { 
+    title: "Q3 Crypto Outlook", 
+    image: "/images/q3-crypto-outlook.webp", 
+    link: "/Halaman/page/4-liveclass/25-q3-crypto-outlook",
+    category: "Webinar & Liveclass"
+  },
+  { 
     title: "The Art of Crypto Trading", 
     image: "/images/art-of-crypto-trading.jpg", 
     link: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading",
@@ -142,5 +148,5 @@ export const liveclassData= [
     image: "/images/reg.jpg", 
     link: "/Halaman/page/4-liveclass/23-2025-Crypto-Regulation",
     category: "Webinar & Liveclass"
-  }
+  },
 ];
