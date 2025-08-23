@@ -6,11 +6,10 @@ import Loading from "@/ui/loading";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const getSecureYouTubeEmbedUrl = (url: string) => {
+const getGoogleDriveEmbedUrl = (url: string) => {
   const matches = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   const videoId = matches ? matches[1] : "";
-  // Enhanced security parameters
-  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&controls=1&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&showinfo=0&cc_load_policy=0&hl=en&enablejsapi=0&origin=${typeof window !== 'undefined' ? window.location.origin : ''}&widget_referrer=${typeof window !== 'undefined' ? window.location.origin : ''}`;
+  return `https://www.youtube.com/embed/${videoId}`;
 };
 
 export default function Container() {
@@ -18,8 +17,6 @@ export default function Container() {
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
   const [hideOverlay, setHideOverlay] = useState(false);
-  const [videoProgress, setVideoProgress] = useState<{[key: string]: boolean}>({});
-  const [currentTime, setCurrentTime] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -27,22 +24,6 @@ export default function Container() {
   const nextModuleLink = searchParams?.get("next") || "";
   const thumbnail = searchParams?.get("thumbnail") || "";
   const videoData = Data.find((item) => item.id === videoId);
-
-  // Update current time
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString('id-ID', { 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: false 
-      }));
-    };
-    
-    updateTime();
-    const timer = setInterval(updateTime, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     const checkAccess = async () => {
@@ -89,34 +70,6 @@ export default function Container() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Enhanced security: Disable right-click and developer tools shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C')) ||
-        (e.ctrlKey && e.key === 'u')
-      ) {
-        e.preventDefault();
-        return false;
-      }
-    };
-
-    const handleContextMenu = (e: MouseEvent) => {
-      e.preventDefault();
-      return false;
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('contextmenu', handleContextMenu);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
-
   const handleOverlayClick = () => {
     if (nextModuleLink) {
       router.push(nextModuleLink);
@@ -124,287 +77,219 @@ export default function Container() {
   };
 
   const handleClickLesson = (item: typeof Data[number]) => {
-    // Mark as watched
-    setVideoProgress(prev => ({
-      ...prev,
-      [item.id]: true
-    }));
-    
     router.push(
       `?id=${item.id}&next=${encodeURIComponent(item.link)}&thumbnail=`
     );
   };
 
-  const completedLessons = Object.values(videoProgress).filter(Boolean).length;
-  const progressPercentage = (completedLessons / Data.length) * 100;
-
   if (loading || status === "loading") return <Loading />;
   if (!session || !hasAccess) return null;
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white font-sans selection:bg-purple-500/30">
-      {/* Animated background particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -inset-10 opacity-30">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${Math.random() * 4 + 1}px`,
-                height: `${Math.random() * 4 + 1}px`,
-                backgroundColor: '#8b5cf6',
-                borderRadius: '50%',
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${Math.random() * 3 + 2}s`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
+  const currentIndex = Data.findIndex(item => item.id === videoId);
+  const progress = Math.round(((currentIndex + 1) / Data.length) * 100);
 
-      {/* Header */}
-      <div className="relative z-10 bg-black/50 backdrop-blur-xl border-b border-purple-500/20">
-        <div className="px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-sm font-bold">🎓</span>
-              </div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Learning Platform
-              </h1>
-            </div>
-            <div className="hidden md:flex items-center gap-4 text-sm text-gray-400">
-              <span>Progress: {Math.round(progressPercentage)}%</span>
-              <div className="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
-                  style={{ width: `${progressPercentage}%` }}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 text-sm text-gray-400">
-            <span>{currentTime}</span>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          </div>
-        </div>
-      </div>
+  return (
+    <div className="min-h-screen bg-black text-white font-sans overflow-hidden">
+
+
+
 
       <div className="flex flex-col lg:flex-row relative z-10">
         {/* Left: Video Player */}
-        <div className="lg:w-[65%]">
-          <div className="p-4 lg:p-8 lg:sticky lg:top-0">
-            <div className="relative">
+        <div className="lg:w-[60%] relative">
+          <div className="p-4 lg:p-8 lg:fixed lg:w-[55%] lg:max-w-[900px]">
+            {/* Video container with enhanced styling */}
+            <div className="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-gray-800/50 group">
               {/* Glowing border effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-3xl blur opacity-75 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
               
-              <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
-                {/* Security overlay */}
-                <div className="absolute inset-0 z-20 pointer-events-none">
-                  <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 rounded-full text-xs text-purple-400 font-medium">
-                    🔒 Protected Content
-                  </div>
-                </div>
-
-                {/* Next module overlay */}
-                <div
-                  className={`absolute top-0 right-0 w-16 h-16 bg-transparent z-10 transition-all duration-1000 cursor-pointer ${
-                    hideOverlay ? "opacity-0" : "opacity-100"
-                  } hover:bg-purple-500/20 rounded-bl-2xl`}
-                  onClick={handleOverlayClick}
-                  title="Next Module"
-                >
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-2xl">⏭️</span>
-                  </div>
-                </div>
-
-                {thumbnail ? (
-                  <img
-                    src={thumbnail}
-                    alt="Video Thumbnail"
-                    className="w-full h-full object-cover"
-                    draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
-                ) : videoData?.drive ? (
-                  <div className="relative w-full h-full">
-                    {/* Additional security layer */}
-                    <div className="absolute inset-0 z-10 pointer-events-none bg-transparent"></div>
-                    <iframe
-                      src={getSecureYouTubeEmbedUrl(videoData.drive)}
-                      width="100%"
-                      height="100%"
-                      title="Learning Video"
-                      allow="encrypted-media; picture-in-picture"
-                      frameBorder="0"
-                      allowFullScreen={false}
-                      loading="lazy"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      sandbox="allow-scripts allow-same-origin allow-presentation"
-                      style={{ 
-                        border: "none",
-                        pointerEvents: "auto"
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">📹</div>
-                      <p>No video available</p>
-                    </div>
-                  </div>
-                )}
+              <div
+                className={`absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-purple-600/80 to-pink-600/80 backdrop-blur-md rounded-full z-10 transition-all duration-1000 cursor-pointer flex items-center justify-center group/next hover:scale-110 ${
+                  hideOverlay ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
+                onClick={handleOverlayClick}
+                title="Next Module"
+              >
+                <svg className="w-5 h-5 text-white transform group-hover/next:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </div>
+
+              {thumbnail ? (
+                <img
+                  src={thumbnail}
+                  alt="Video Thumbnail"
+                  className="w-full h-full object-cover rounded-3xl"
+                />
+              ) : videoData?.drive ? (
+                <iframe
+                  src={getGoogleDriveEmbedUrl(videoData.drive)}
+                  width="100%"
+                  height="100%"
+                  title="YouTube video player"
+                  allow="autoplay"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="rounded-3xl"
+                  style={{ border: "none" }}
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400 bg-black rounded-3xl">
+                  <div className="text-center">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <p className="text-lg font-medium">No video available</p>
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div className="mt-6 space-y-4">
-              <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent leading-tight">
-                {videoData?.title || "Untitled Lesson"}
-              </h1>
-              
-              {/* Video info cards */}
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="bg-purple-500/20 border border-purple-500/30 rounded-xl px-4 py-2 flex items-center gap-2">
-                  <span className="text-purple-400">⏱️</span>
-                  <span>Duration: Interactive</span>
+            {/* Enhanced title section */}
+            <div className="mt-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full border border-purple-500/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-xs font-medium text-gray-300">Lesson {currentIndex + 1} of {Data.length}</span>
                 </div>
-                <div className="bg-green-500/20 border border-green-500/30 rounded-xl px-4 py-2 flex items-center gap-2">
-                  <span className="text-green-400">✅</span>
-                  <span>HD Quality</span>
-                </div>
-                <div className="bg-blue-500/20 border border-blue-500/30 rounded-xl px-4 py-2 flex items-center gap-2">
-                  <span className="text-blue-400">🔒</span>
-                  <span>Secure Stream</span>
+                <div className="px-3 py-1.5 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-full border border-gray-600/30">
+                  <span className="text-xs font-medium text-gray-300">{progress}% Complete</span>
                 </div>
               </div>
+              <h1 className="text-2xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300 tracking-tight leading-tight">
+                {videoData?.title || "Untitled Lesson"}
+              </h1>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-3"></div>
             </div>
           </div>
         </div>
 
         {/* Right: Lessons List */}
-        <div className="lg:w-[35%] bg-gradient-to-b from-gray-900/90 to-black/90 backdrop-blur-xl border-l border-purple-500/20 min-h-screen">
-          <div className="p-6 sticky top-0 bg-black/80 backdrop-blur-xl border-b border-purple-500/20">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                <span className="text-purple-400">📚</span>
+        <div className="lg:w-[40%] bg-black border-l border-gray-800/30 min-h-screen relative">
+          <div className="sticky top-0 bg-black/80 backdrop-blur-md border-b border-gray-800/30 p-4 lg:p-6 z-20">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                 Course Content
               </h2>
-              <span className="text-sm text-gray-400 bg-purple-500/20 px-3 py-1 rounded-full">
-                {Data.length} lessons
-              </span>
-            </div>
-            
-            {/* Progress bar */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm text-gray-400">
-                <span>Your Progress</span>
-                <span>{completedLessons}/{Data.length}</span>
-              </div>
-              <div className="w-full h-3 bg-gray-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 transition-all duration-700 ease-out rounded-full"
-                  style={{ width: `${progressPercentage}%` }}
-                />
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-full border border-gray-600/30">
+                <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span className="text-sm font-medium text-gray-300">{Data.length} Lessons</span>
               </div>
             </div>
           </div>
 
-          <div className="p-6 space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar">
+          <div className="p-4 lg:p-6 space-y-3 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
             {Data.map((item, index) => (
               <div
                 key={item.id}
-                className={`group relative overflow-hidden rounded-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ${
+                className={`relative group cursor-pointer transition-all duration-300 ${
                   videoId === item.id
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600 shadow-lg shadow-purple-500/25"
-                    : "bg-gradient-to-r from-gray-800 to-gray-700 hover:from-purple-700 hover:to-pink-700"
+                    ? "transform scale-[1.02]"
+                    : "hover:transform hover:scale-[1.01]"
                 }`}
                 onClick={() => handleClickLesson(item)}
               >
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
-                </div>
+                {/* Background with gradient and effects */}
+                <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${
+                  videoId === item.id
+                    ? "bg-gradient-to-r from-purple-600/30 via-purple-500/20 to-pink-600/30 shadow-lg shadow-purple-500/25"
+                    : "bg-gradient-to-r from-gray-800/40 to-gray-700/40 group-hover:from-purple-600/20 group-hover:to-pink-600/20"
+                }`}></div>
+                
+                {/* Border gradient */}
+                <div className={`absolute inset-0 rounded-2xl border transition-all duration-300 ${
+                  videoId === item.id
+                    ? "border-purple-500/50 shadow-lg"
+                    : "border-gray-700/50 group-hover:border-purple-500/30"
+                }`}></div>
 
-                <div className="relative flex items-center gap-4 p-4">
+                {/* Content */}
+                <div className="relative flex items-center gap-4 p-4 lg:p-5">
                   {/* Lesson number */}
-                  <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                    videoProgress[item.id] 
-                      ? "bg-green-500 text-white" 
-                      : videoId === item.id
-                        ? "bg-white text-purple-600"
-                        : "bg-gray-600 text-gray-300 group-hover:bg-purple-500 group-hover:text-white"
-                  } transition-all duration-300`}>
-                    {videoProgress[item.id] ? "✓" : String(index + 1).padStart(2, '0')}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className={`font-semibold text-sm lg:text-base leading-snug ${
-                      videoId === item.id ? "text-white" : "text-gray-100 group-hover:text-white"
-                    } transition-colors duration-300`}>
-                      {item.title}
-                    </h3>
-                    <div className="flex items-center gap-2 mt-1 text-xs text-gray-400">
-                      <span>Lesson {index + 1}</span>
-                      {videoProgress[item.id] && (
-                        <>
-                          <span>•</span>
-                          <span className="text-green-400">Completed</span>
-                        </>
-                      )}
-                    </div>
+                  <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                    videoId === item.id
+                      ? "bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg"
+                      : "bg-gray-700/50 text-gray-300 group-hover:bg-gradient-to-br group-hover:from-purple-600/50 group-hover:to-pink-600/50"
+                  }`}>
+                    {index + 1}
                   </div>
 
                   {/* Play icon */}
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
                     videoId === item.id
                       ? "bg-white/20 text-white"
-                      : "bg-gray-700 text-gray-400 group-hover:bg-purple-500 group-hover:text-white"
-                  } transition-all duration-300 group-hover:scale-110`}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+                      : "bg-gray-700/50 text-gray-400 group-hover:bg-purple-500/20 group-hover:text-purple-300"
+                  }`}>
+                    {videoId === item.id ? (
+                      <div className="w-3 h-3 bg-current rounded-sm animate-pulse"></div>
+                    ) : (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    )}
                   </div>
-                </div>
 
-                {/* Active indicator */}
-                {videoId === item.id && (
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-orange-500"></div>
-                )}
+                  {/* Title */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`text-sm lg:text-base font-semibold truncate transition-all duration-300 ${
+                      videoId === item.id
+                        ? "text-white"
+                        : "text-gray-200 group-hover:text-white"
+                    }`}>
+                      {item.title}
+                    </h3>
+                    <div className={`flex items-center gap-2 mt-1 transition-all duration-300 ${
+                      videoId === item.id
+                        ? "text-purple-200"
+                        : "text-gray-500 group-hover:text-purple-300"
+                    }`}>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                      </svg>
+                      <span className="text-xs">Duration varies</span>
+                    </div>
+                  </div>
+
+                  {/* Status indicator */}
+                  {videoId === item.id && (
+                    <div className="flex-shrink-0">
+                      <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></div>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
-          </div>
-
-          {/* Footer */}
-          <div className="p-6 border-t border-purple-500/20 bg-black/80 backdrop-blur-xl">
-            <div className="text-center text-sm text-gray-400">
-              <p>🔐 Content is protected and secure</p>
-              <p className="mt-1">Keep learning! 💪</p>
-            </div>
           </div>
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
+          background: rgba(31, 41, 55, 0.3);
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(45deg, #8b5cf6, #ec4899);
+          background: linear-gradient(to bottom, rgb(147, 51, 234), rgb(219, 39, 119));
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(45deg, #7c3aed, #db2777);
+          background: linear-gradient(to bottom, rgb(124, 58, 237), rgb(190, 24, 93));
+        }
+        
+        /* Hide bottom navbar on desktop for this page only */
+        @media (min-width: 1024px) {
+          nav[class*="flex justify-around"] {
+            display: none !important;
+          }
+          div[class*="fixed bottom-0"] {
+            display: none !important;
+          }
         }
       `}</style>
     </div>
