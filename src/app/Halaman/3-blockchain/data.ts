@@ -1,4 +1,10 @@
 export const blockchainData = [
+    { 
+    title: "Defi & Finance Applications", 
+    image: "/images/defi-financial-app.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/40-defi-finance-app",
+    category: "blockchain"
+  },
   {
     title: "Core Blockchain & Consensus Topics",
     image: "/images/core-blokchain-consensus.webp",
