@@ -155,7 +155,7 @@ export default function Container() {
           <div className="sticky top-0 bg-black/80 backdrop-blur-md border-b border-gray-800/30 p-4 lg:p-6 z-20">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                LIVECLASS
+                BLOCKCHAIN TECHNOLOGY
               </h2>
               <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-full border border-gray-600/30">
                 <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
