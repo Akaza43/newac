@@ -90,10 +90,6 @@ export default function Container() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-hidden">
-
-
-
-
       <div className="flex flex-col lg:flex-row relative z-10">
         {/* Left: Video Player */}
         <div className="lg:w-[60%] relative">
@@ -103,17 +99,7 @@ export default function Container() {
               {/* Glowing border effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
               
-              <div
-                className={`absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-purple-600/80 to-pink-600/80 backdrop-blur-md rounded-full z-10 transition-all duration-1000 cursor-pointer flex items-center justify-center group/next hover:scale-110 ${
-                  hideOverlay ? "opacity-0 pointer-events-none" : "opacity-100"
-                }`}
-                onClick={handleOverlayClick}
-                title="Next Module"
-              >
-                <svg className="w-5 h-5 text-white transform group-hover/next:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+
 
               {thumbnail ? (
                 <img
@@ -169,7 +155,7 @@ export default function Container() {
           <div className="sticky top-0 bg-black/80 backdrop-blur-md border-b border-gray-800/30 p-4 lg:p-6 z-20">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                Course Content
+                LIVECLASS
               </h2>
               <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-full border border-gray-600/30">
                 <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,20 +202,7 @@ export default function Container() {
                     {index + 1}
                   </div>
 
-                  {/* Play icon */}
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    videoId === item.id
-                      ? "bg-white/20 text-white"
-                      : "bg-gray-700/50 text-gray-400 group-hover:bg-purple-500/20 group-hover:text-purple-300"
-                  }`}>
-                    {videoId === item.id ? (
-                      <div className="w-3 h-3 bg-current rounded-sm animate-pulse"></div>
-                    ) : (
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    )}
-                  </div>
+
 
                   {/* Title */}
                   <div className="flex-1 min-w-0">
