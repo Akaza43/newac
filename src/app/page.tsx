@@ -130,23 +130,44 @@ export default function HomePage() {
           {/* Judul global */}
 
           {/* ...existing content dari renderContent... */}
-          <div className="mb-6 mt-0">
-            <div className="p-2 md:p-6 rounded-xl transition-all duration-300 relative overflow-visible" style={{marginTop: '-35px', background: 'transparent'}}>
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <div className="w-full order-1 mb-3 md:mb-0 md:order-1 md:w-1/2 flex flex-col justify-center">
-                  <h1 className="hidden md:block text-xl md:text-5xl font-bold text-white leading-tight">
-                    The Art of <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Crypto Trading</span>
-                  </h1>
-                  <div className="hidden md:flex gap-2 mt-3">
-                    <a href={links.startLearning} className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-white to-white text-black text-base font-semibold rounded-lg hover:opacity-90 transition-all duration-300">
-                      <FaPlay />
-                      Tonton
-                    </a>
-                    <a href={links.moreInfo} className="flex items-center justify-center px-4 py-2 border-gray-700 text-white text-base font-medium rounded-lg hover:bg-purple-500/10 transition-all duration-300">
-                      Selengkapnya
-                    </a>
-                  </div>
-                </div>
+                    <div className="mb-6 mt-0">
+                      <div className="p-2 md:p-6 rounded-xl transition-all duration-300 relative overflow-visible" style={{marginTop: '-35px', background: 'transparent'}}>
+                        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                          <div className="w-full order-1 mb-3 md:mb-0 md:order-1 md:w-1/2 flex flex-col justify-center">
+                            <div className="hidden md:block mb-4">
+                              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full border border-purple-500/30 mb-4">
+                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                <span className="text-xs font-medium text-gray-300">Akademi Crypto Classes</span>
+                              </div>
+                            </div>
+                            
+                            <h1 className="hidden md:block text-xl md:text-5xl font-bold text-white leading-tight mb-4">
+                              The Art of <br />
+                              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-500 animate-pulse">
+                                Crypto Trading
+                              </span>
+                            </h1>
+                            
+                            <p className="hidden md:block text-gray-400 mb-6 text-lg leading-relaxed">
+                              Master the art of cryptocurrency trading with our comprehensive course designed for both beginners and advanced traders.
+                            </p>
+                            
+                            <div className="hidden md:flex gap-4 mt-3">
+                              <a 
+                                href={links.startLearning} 
+                                className="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-white to-gray-100 text-black text-base font-semibold rounded-xl hover:from-gray-100 hover:to-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                              >
+                                <FaPlay className="group-hover:animate-pulse" />
+                                Tonton
+                              </a>
+                              <a 
+                                href={links.moreInfo} 
+                                className="flex items-center justify-center px-6 py-3 border border-purple-500/50 text-white text-base font-medium rounded-xl hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 backdrop-blur-sm"
+                              >
+                                Selengkapnya
+                              </a>
+                            </div>
+                          </div>
                 <div className="w-full md:w-1/2 space-y-2 order-2 md:order-2 flex flex-col items-center md:items-end">
                   <div className="relative group border border-gray-800/30 rounded-xl overflow-hidden w-full max-w-xl">
                     <img
