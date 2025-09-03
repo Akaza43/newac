@@ -1,5 +1,17 @@
 export const blockchainData = [
-    { 
+  { 
+    title: "PRIVACY & S", 
+    image: "/images/privacy-scutity-management.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/42-privacy-secutity",
+    category: "blockchain"
+  },
+  { 
+    title: "NFTs", 
+    image: "/images/nfts.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/41-nfts-tekonization",
+    category: "blockchain"
+  },
+  { 
     title: "Defi & Finance Applications", 
     image: "/images/defi-financial-app.webp",  
     link: "/Halaman/page/3-crypto-blockchain/40-defi-finance-app",
