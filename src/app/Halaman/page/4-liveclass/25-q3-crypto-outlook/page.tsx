@@ -90,30 +90,16 @@ export default function Container() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-hidden">
-
-
-
-
       <div className="flex flex-col lg:flex-row relative z-10">
         {/* Left: Video Player */}
         <div className="lg:w-[60%] relative">
           <div className="p-4 lg:p-8 lg:fixed lg:w-[55%] lg:max-w-[900px]">
             {/* Video container with enhanced styling */}
             <div className="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-gray-800/50 group">
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+              {/* Glowing border effect - Changed to purple */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-violet-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
               
-              <div
-                className={`absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-purple-600/80 to-pink-600/80 backdrop-blur-md rounded-full z-10 transition-all duration-1000 cursor-pointer flex items-center justify-center group/next hover:scale-110 ${
-                  hideOverlay ? "opacity-0 pointer-events-none" : "opacity-100"
-                }`}
-                onClick={handleOverlayClick}
-                title="Next Module"
-              >
-                <svg className="w-5 h-5 text-white transform group-hover/next:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+
 
               {thumbnail ? (
                 <img
@@ -148,7 +134,7 @@ export default function Container() {
             {/* Enhanced title section */}
             <div className="mt-6">
               <div className="flex items-center gap-3 mb-2">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full border border-purple-500/30">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-600/20 to-violet-600/20 rounded-full border border-purple-500/30">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-xs font-medium text-gray-300">Lesson {currentIndex + 1} of {Data.length}</span>
                 </div>
@@ -159,7 +145,7 @@ export default function Container() {
               <h1 className="text-2xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300 tracking-tight leading-tight">
                 {videoData?.title || "Untitled Lesson"}
               </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-3"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full mt-3"></div>
             </div>
           </div>
         </div>
@@ -168,8 +154,8 @@ export default function Container() {
         <div className="lg:w-[40%] bg-black border-l border-gray-800/30 min-h-screen relative">
           <div className="sticky top-0 bg-black/80 backdrop-blur-md border-b border-gray-800/30 p-4 lg:p-6 z-20">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                Course Content
+              <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-400">
+                LIVECLASS
               </h2>
               <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-full border border-gray-600/30">
                 <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +166,7 @@ export default function Container() {
             </div>
           </div>
 
-          <div className="p-4 lg:p-6 space-y-3 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
+          <div className="p-4 lg:p-6 space-y-3 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pb-20 lg:pb-8">
             {Data.map((item, index) => (
               <div
                 key={item.id}
@@ -191,14 +177,14 @@ export default function Container() {
                 }`}
                 onClick={() => handleClickLesson(item)}
               >
-                {/* Background with gradient and effects */}
+                {/* Background with gradient and effects - Changed to purple */}
                 <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${
                   videoId === item.id
-                    ? "bg-gradient-to-r from-purple-600/30 via-purple-500/20 to-pink-600/30 shadow-lg shadow-purple-500/25"
-                    : "bg-gradient-to-r from-gray-800/40 to-gray-700/40 group-hover:from-purple-600/20 group-hover:to-pink-600/20"
+                    ? "bg-gradient-to-r from-purple-600/30 via-purple-500/20 to-violet-600/30 shadow-lg shadow-purple-500/25"
+                    : "bg-gradient-to-r from-gray-800/40 to-gray-700/40 group-hover:from-purple-600/20 group-hover:to-violet-600/20"
                 }`}></div>
                 
-                {/* Border gradient */}
+                {/* Border gradient - Changed to purple */}
                 <div className={`absolute inset-0 rounded-2xl border transition-all duration-300 ${
                   videoId === item.id
                     ? "border-purple-500/50 shadow-lg"
@@ -207,29 +193,16 @@ export default function Container() {
 
                 {/* Content */}
                 <div className="relative flex items-center gap-4 p-4 lg:p-5">
-                  {/* Lesson number */}
+                  {/* Lesson number - Changed to purple */}
                   <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${
                     videoId === item.id
-                      ? "bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg"
-                      : "bg-gray-700/50 text-gray-300 group-hover:bg-gradient-to-br group-hover:from-purple-600/50 group-hover:to-pink-600/50"
+                      ? "bg-gradient-to-br from-purple-500 to-violet-500 text-white shadow-lg"
+                      : "bg-gray-700/50 text-gray-300 group-hover:bg-gradient-to-br group-hover:from-purple-600/50 group-hover:to-violet-600/50"
                   }`}>
                     {index + 1}
                   </div>
 
-                  {/* Play icon */}
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    videoId === item.id
-                      ? "bg-white/20 text-white"
-                      : "bg-gray-700/50 text-gray-400 group-hover:bg-purple-500/20 group-hover:text-purple-300"
-                  }`}>
-                    {videoId === item.id ? (
-                      <div className="w-3 h-3 bg-current rounded-sm animate-pulse"></div>
-                    ) : (
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    )}
-                  </div>
+
 
                   {/* Title */}
                   <div className="flex-1 min-w-0">
@@ -253,10 +226,10 @@ export default function Container() {
                     </div>
                   </div>
 
-                  {/* Status indicator */}
+                  {/* Status indicator - Changed to purple */}
                   {videoId === item.id && (
                     <div className="flex-shrink-0">
-                      <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></div>
+                      <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-violet-400 rounded-full"></div>
                     </div>
                   )}
                 </div>
@@ -275,11 +248,11 @@ export default function Container() {
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, rgb(147, 51, 234), rgb(219, 39, 119));
+          background: linear-gradient(to bottom, rgb(147, 51, 234), rgb(124, 58, 237));
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, rgb(124, 58, 237), rgb(190, 24, 93));
+          background: linear-gradient(to bottom, rgb(126, 34, 206), rgb(109, 40, 217));
         }
         
         /* Hide bottom navbar on desktop for this page only */
