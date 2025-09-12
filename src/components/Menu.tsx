@@ -14,12 +14,12 @@ const Menu = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [komunitasUrl, setKomunitasUrl] = useState("/menu/komunitas");
+  const [komunitasUrl, setKomunitasUrl] = useState("/profile");
   const [komunitasExternal, setKomunitasExternal] = useState(false);
 
   useEffect(() => {
     const config = domainConfigs.find(d => d.hostname === window.location.hostname);
-    setKomunitasUrl(config?.url || "/menu/komunitas");
+    setKomunitasUrl(config?.url || "/profile");
     setKomunitasExternal(config?.openInNewTab ?? false);
   }, []);
 
@@ -79,13 +79,13 @@ const Menu = () => {
         <button
           onClick={handleKomunitasClick}
           className={`flex flex-col items-center p-4 flex-1 ${
-            pathname === "/menu/komunitas"
+            pathname === "/menu/profile"
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}
         >
           <IoPeopleOutline className="text-xl mb-1" />
-          <span className="text-xs">KOMUNITAS</span>
+          <span className="text-xs">PROFILE</span>
         </button>
       </nav>
     </div>
