@@ -14,12 +14,12 @@ const Menu = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [komunitasUrl, setKomunitasUrl] = useState("/profile");
+  const [komunitasUrl, setKomunitasUrl] = useState("/menu/komunitas");
   const [komunitasExternal, setKomunitasExternal] = useState(false);
 
   useEffect(() => {
     const config = domainConfigs.find(d => d.hostname === window.location.hostname);
-    setKomunitasUrl(config?.url || "/profile");
+    setKomunitasUrl(config?.url || "/menu/komunitas");
     setKomunitasExternal(config?.openInNewTab ?? false);
   }, []);
 
