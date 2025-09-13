@@ -79,7 +79,7 @@ const Menu = () => {
         <button
           onClick={handleKomunitasClick}
           className={`flex flex-col items-center p-4 flex-1 ${
-            pathname === "/menu/profile"
+            pathname === "/menu/komunitas"
               ? "text-purple-500"
               : "text-gray-500 hover:text-purple-500"
           }`}
