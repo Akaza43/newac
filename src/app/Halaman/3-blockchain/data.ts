@@ -1,6 +1,12 @@
 export const blockchainData = [
   { 
     title: "PRIVACY & S", 
+    image: "/images/croos-on-chaininteroprobabillity.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/43-croos-on-chain-interoprobabillity",
+    category: "blockchain"
+  },
+  { 
+    title: "PRIVACY & S", 
     image: "/images/privacy-scutity-management.webp",  
     link: "/Halaman/page/3-crypto-blockchain/42-privacy-secutity",
     category: "blockchain"

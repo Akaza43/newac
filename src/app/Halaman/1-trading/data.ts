@@ -1,6 +1,12 @@
 export const tradingData = [
   {
-    title: "Crypto Exit Strategy",
+    title: "Crypto Quantitative Trading Strategy 2",
+    image: "/images/quant-v2.webp", 
+    link: "/Halaman/page/1-crypto-trading/22-crypto-quantitative-trading-strategy-2",
+    category: "trading",
+  },
+  {
+    title: "Crypto Quantitative Trading Strategy 2",
     image: "/images/crypto-quantitative-trading.webp", 
     link: "/Halaman/page/1-crypto-trading/21-crypto-quantitative-trading-strategy",
     category: "trading",
