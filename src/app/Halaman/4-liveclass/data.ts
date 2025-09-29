@@ -1,5 +1,11 @@
 export const liveclassData= [
   { 
+    title: "Q4 Crypto Outlook", 
+    image: "/images/q4-crypto-outlook.webp", 
+    link: "/Halaman/page/4-liveclass/26-q4-crypto-outlook",
+    category: "Webinar & Liveclass"
+  },
+  { 
     title: "Q3 Crypto Outlook", 
     image: "/images/q3-crypto-outlook.webp", 
     link: "/Halaman/page/4-liveclass/25-q3-crypto-outlook",

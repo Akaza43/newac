@@ -1,5 +1,11 @@
 export const tradingData = [
   {
+    title: "Momentum Trand following",
+    image: "/images/momentum-trand-following.webp", 
+    link: "/Halaman/page/1-crypto-trading/23-momentum-trand-following",
+    category: "trading",
+  },
+  {
     title: "Crypto Quantitative Trading Strategy 3",
     image: "/images/quant-v3.webp", 
     link: "/Halaman/page/1-crypto-trading/22-crypto-quantitative-trading-strategy-3",
