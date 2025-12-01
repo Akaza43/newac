@@ -1,6 +1,24 @@
 export const blockchainData = [
   { 
-    title: "PRIVACY & S", 
+    title: "ZCASH", 
+    image: "/images/zcash.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/46-zcash",
+    category: "blockchain"
+  },
+  { 
+    title: "EMERGING CONCEPTS & NEW TECH TRENDS", 
+    image: "/images/emerging.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/45-emerging-concepts-new-tech-trends",
+    category: "blockchain"
+  },
+  { 
+    title: "ENTERPRISE RWA", 
+    image: "/images/enterpriserwa.webp",  
+    link: "/Halaman/page/3-crypto-blockchain/44-enterprise-rwa",
+    category: "blockchain"
+  },
+  { 
+    title: "CROSS ON CHAIN", 
     image: "/images/croos-on-chaininteroprobabillity.webp",  
     link: "/Halaman/page/3-crypto-blockchain/43-croos-on-chain-interoprobabillity",
     category: "blockchain"
