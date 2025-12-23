@@ -2,20 +2,38 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { blockchainData } from './data';
 
-export default function InvestingPage() {
+export default function BlockchainPage() {
   const [imgError, setImgError] = useState<{ [key: string]: boolean }>({});
   const [isGrid, setIsGrid] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
-  const scrollContainerRef = useRef<HTMLDivElement>(null); // Ref for the scroll container
+  const router = useRouter();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Default to grid layout if pathname matches /Halaman/1-trading
-    if (pathname === "/Halaman/1-trading") {
+    // Check authentication
+    const token = localStorage.getItem('authToken');
+    setIsAuthenticated(!!token);
+
+    // Listen for auth changes
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'authToken') {
+        setIsAuthenticated(!!e.newValue);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  useEffect(() => {
+    // Default to grid layout if pathname matches
+    if (pathname === "/Halaman/3-blockchain") {
       setIsGrid(true);
     }
 
@@ -57,6 +75,17 @@ export default function InvestingPage() {
     setImgError((prev) => ({ ...prev, [title]: true }));
   }
 
+  const handleItemClick = (e: React.MouseEvent, link: string) => {
+    // If user is not authenticated, prevent default and redirect to home
+    if (!isAuthenticated) {
+      e.preventDefault();
+      router.push('/');
+      return;
+    }
+    // If authenticated, allow normal navigation
+    window.location.href = link;
+  };
+
   return (
     <div>
       <div className="flex items-center gap-">
@@ -76,7 +105,7 @@ export default function InvestingPage() {
         </button>
       </div>
       <div
-        ref={scrollContainerRef} // Attach the ref to the scroll container
+        ref={scrollContainerRef}
         className={`
           transition-all duration-300 ease-in-out
           ${isGrid
@@ -86,16 +115,26 @@ export default function InvestingPage() {
         `}
       >
         {blockchainData.map((item, index) => (
-          <a
+          <div
             key={index}
-            href={item.link}
-            rel="noopener noreferrer"
+            onClick={(e) => handleItemClick(e, item.link)}
             className={`
-              overflow-hidden hover:scale-[1.02] transition-transform rounded-lg md:rounded-xl
+              overflow-hidden hover:scale-[1.02] transition-transform rounded-lg md:rounded-xl cursor-pointer
               ${isGrid ? "w-full" : "flex-none w-44 md:w-80"}
+              ${!isAuthenticated ? "opacity-75 hover:opacity-90" : ""}
             `}
           >
             <div className="aspect-video relative rounded-md md:rounded-lg overflow-hidden">
+              {!isAuthenticated && (
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-10 flex items-center justify-center">
+                  <div className="text-center">
+                    <svg className="w-8 h-8 mx-auto mb-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <p className="text-xs text-white font-medium">Login Required</p>
+                  </div>
+                </div>
+              )}
               {imgError[item.title] ? (
                 <div className="w-full h-full flex items-center justify-center">
                   <span className="text-[8px] md:text-base text-gray-400">{item.title}</span>
@@ -112,7 +151,7 @@ export default function InvestingPage() {
                 />
               )}
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
