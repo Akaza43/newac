@@ -228,7 +228,7 @@ export default function HomePage() {
       {/* Navigation Bar - Only show when authenticated */}
       <Nav />
 
-      <div className="relative z-10 pt-16 pb-16 md:pb-8">
+      <div className="relative z-10 pt-16 pb-2 md:pb-8">
         <div className="container mx-auto px-3 pt-0 pb-0">
           <div className="mb-6 mt-0">
             <div className="p-2 md:p-6 rounded-xl transition-all duration-300 relative overflow-visible" style={{marginTop: '-90px', background: 'transparent'}}>

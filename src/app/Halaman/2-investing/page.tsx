@@ -2,16 +2,13 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
+// MdKeyboardArrowDown dihapus karena tidak lagi digunakan
 import { investingData } from './data';
 
 export default function InvestingPage() {
   const [imgError, setImgError] = useState<{ [key: string]: boolean }>({});
-  const [isGrid, setIsGrid] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const pathname = usePathname();
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -31,46 +28,6 @@ export default function InvestingPage() {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  useEffect(() => {
-    // Default to grid layout if pathname matches
-    if (pathname === "/Halaman/2-investing") {
-      setIsGrid(true);
-    }
-
-    // Retrieve layout state from local storage
-    const savedLayout = localStorage.getItem("layout-2");
-    if (savedLayout) {
-      setIsGrid(savedLayout === "grid");
-    }
-  }, [pathname]);
-
-  function toggleLayout(): void {
-    const newLayout = !isGrid;
-    setIsGrid(newLayout);
-    localStorage.setItem("layout-2", newLayout ? "grid" : "normal");
-
-    if (!newLayout) {
-      setIsTransitioning(true);
-    }
-  }
-
-  useEffect(() => {
-    if (isTransitioning && scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      
-      // First set scroll to end instantly
-      container.style.scrollBehavior = 'auto';
-      container.scrollLeft = container.scrollWidth;
-      
-      // Then scroll to start smoothly after a brief delay
-      setTimeout(() => {
-        container.style.scrollBehavior = 'smooth';
-        container.scrollLeft = 0;
-        setIsTransitioning(false);
-      }, 50);
-    }
-  }, [isTransitioning]);
-
   function handleImageError(title: string): void {
     setImgError((prev) => ({ ...prev, [title]: true }));
   }
@@ -88,31 +45,17 @@ export default function InvestingPage() {
 
   return (
     <div>
-      <div className="flex items-center gap-">
-        <h1
-          onClick={toggleLayout}
-          className="text-sm md:text-2xl font-bold text-white mb-2 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity"
-        >
+      {/* Header: Fungsi klik dan tombol panah dihapus */}
+      <div className="flex items-center">
+        <h1 className="text-sm md:text-2xl font-bold text-white mb-2 md:mb-6">
           Crypto Investing
         </h1>
-        <button
-          onClick={toggleLayout}
-          className="mb-2 md:mb-6 text-white hover:opacity-80 transition-opacity"
-        >
-          <MdKeyboardArrowDown
-            className={`text-xl md:text-3xl transform transition-transform duration-300 ${isGrid ? "rotate-180" : ""}`}
-          />
-        </button>
       </div>
+
+      {/* Konten: Dikunci ke mode horizontal (flex) */}
       <div
         ref={scrollContainerRef}
-        className={`
-          transition-all duration-300 ease-in-out
-          ${isGrid
-            ? "grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-6"
-            : "flex overflow-x-auto gap-2 md:gap-6 pb-2 md:pb-4 scrollbar-hide"
-          }
-        `}
+        className="flex overflow-x-auto gap-2 md:gap-6 pb-2 md:pb-4 scrollbar-hide transition-all duration-300 ease-in-out"
       >
         {investingData.map((item, index) => (
           <div
@@ -120,7 +63,7 @@ export default function InvestingPage() {
             onClick={(e) => handleItemClick(e, item.link)}
             className={`
               overflow-hidden hover:scale-[1.02] transition-transform rounded-lg md:rounded-xl cursor-pointer
-              ${isGrid ? "w-full" : "flex-none w-44 md:w-80"}
+              flex-none w-44 md:w-80
               ${!isAuthenticated ? "opacity-75 hover:opacity-90" : ""}
             `}
           >
