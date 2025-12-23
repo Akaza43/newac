@@ -12,10 +12,17 @@ import TradingPage from './Halaman/1-trading/page';
 import AllClassesPage from './Halaman/0-all-classes/page';
 import { FaPlay } from 'react-icons/fa';
 
-// Initialize Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Function to get Supabase client (lazy initialization)
+const getSupabaseClient = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
+  return createClient(supabaseUrl, supabaseAnonKey);
+};
 
 export default function HomePage() {
   const router = useRouter();
@@ -64,6 +71,9 @@ export default function HomePage() {
     setIsLoggingIn(true);
 
     try {
+      // Initialize Supabase client only when needed
+      const supabase = getSupabaseClient();
+      
       // Query user from Supabase
       const { data: users, error: supabaseError } = await supabase
         .from('User')
