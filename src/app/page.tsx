@@ -39,12 +39,43 @@ export default function HomePage() {
     moreInfo: "/Halaman/page/4-liveclass/1-The-Art-of-Crypto-Trading"
   };
 
+  // Auto logout function
+  const handleAutoLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    localStorage.removeItem('loginTime');
+    setIsAuthenticated(false);
+    setUsername('');
+    setPassword('');
+    window.dispatchEvent(new Event('storage'));
+  };
+
   useEffect(() => {
     // Check if user is already logged in
     const checkAuth = () => {
       const token = localStorage.getItem('authToken');
-      if (token) {
-        setIsAuthenticated(true);
+      const loginTime = localStorage.getItem('loginTime');
+      
+      if (token && loginTime) {
+        const currentTime = Date.now();
+        const timeElapsed = currentTime - parseInt(loginTime);
+        const fourHoursInMs = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+        
+        if (timeElapsed >= fourHoursInMs) {
+          // Auto logout if 4 hours have passed
+          handleAutoLogout();
+        } else {
+          setIsAuthenticated(true);
+          
+          // Set timeout for remaining time
+          const remainingTime = fourHoursInMs - timeElapsed;
+          const logoutTimer = setTimeout(() => {
+            handleAutoLogout();
+          }, remainingTime);
+          
+          // Cleanup timeout on unmount
+          return () => clearTimeout(logoutTimer);
+        }
       }
       setLoading(false);
     };
@@ -64,6 +95,26 @@ export default function HomePage() {
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  // Check login status periodically (every minute)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const interval = setInterval(() => {
+      const loginTime = localStorage.getItem('loginTime');
+      if (loginTime) {
+        const currentTime = Date.now();
+        const timeElapsed = currentTime - parseInt(loginTime);
+        const fourHoursInMs = 4 * 60 * 60 * 1000;
+        
+        if (timeElapsed >= fourHoursInMs) {
+          handleAutoLogout();
+        }
+      }
+    }, 60000); // Check every minute
+
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,14 +149,22 @@ export default function HomePage() {
       const user = users[0];
 
       // Generate token and store in localStorage
-      const token = Buffer.from(`${user.id}:${Date.now()}`).toString('base64');
+      const currentTime = Date.now();
+      const token = Buffer.from(`${user.id}:${currentTime}`).toString('base64');
+      
       localStorage.setItem('authToken', token);
+      localStorage.setItem('loginTime', currentTime.toString());
       localStorage.setItem('user', JSON.stringify({
         id: user.id,
         username: user.username,
       }));
 
       setIsAuthenticated(true);
+      
+      // Set auto logout timer (4 hours)
+      setTimeout(() => {
+        handleAutoLogout();
+      }, 4 * 60 * 60 * 1000);
       
       // Trigger storage event for Nav component in same window
       window.dispatchEvent(new Event('storage'));
